@@ -18,46 +18,46 @@ export default function MilestoneCard({ item, showYear = true }) {
         <span className="h-2 w-2 rounded-full bg-brand" />
       </span>
 
-      {/* Title and Year — Full Width */}
-      <div className="min-w-0">
-        {showYear && item?.year && (
-          <div className="mb-2 font-serif text-xl font-bold leading-tight text-brand sm:text-3xl">
-            {item.year}
-          </div>
-        )}
+      {/* Year */}
+      {showYear && item?.year && (
+        <div className="mb-2 font-serif text-xl font-bold leading-tight text-brand sm:text-3xl">
+          {item.year}
+        </div>
+      )}
 
-        <h3 className="break-words font-serif text-base font-bold leading-snug text-ink sm:text-2xl">
-          {item?.title}
-        </h3>
+      {/* Title and Description Left, Image Right */}
+      <div className="flex items-start gap-3 sm:gap-5">
+        {/* Left Content */}
+        <div className="min-w-0 flex-1">
+          <h3 className="break-words font-serif text-base font-bold leading-snug text-ink sm:text-2xl">
+            {item?.title}
+          </h3>
 
-        {item?.location && (
-          <p className="mt-1 break-words text-xs leading-5 text-ink-secondary sm:text-base">
-            {item.location}
-          </p>
-        )}
-      </div>
-
-      {/* Description on the Left, Image on the Right */}
-      {(item?.description || item?.image) && (
-        <div className="mt-3 flex items-start gap-3 sm:mt-4 sm:gap-5">
-          {item?.description && (
-            <p className="min-w-0 flex-1 break-words text-xs leading-relaxed text-ink-secondary sm:text-base sm:leading-relaxed">
-              {item.description}
+          {item?.location && (
+            <p className="mt-1 break-words text-xs leading-5 text-ink-secondary sm:text-base">
+              {item.location}
             </p>
           )}
 
-          {item?.image && (
-            <div className="w-28 shrink-0 overflow-hidden rounded-xl border border-line transition-all duration-300 hover:scale-105 hover:border-brand sm:w-64">
-              <SafeImage
-                src={item.image}
-                alt={item?.title || "Milestone"}
-                ratio="ratio-4-3"
-                zoom
-              />
-            </div>
+          {item?.description && (
+            <p className="mt-3 break-words text-xs leading-relaxed text-ink-secondary sm:mt-4 sm:text-base sm:leading-relaxed">
+              {item.description}
+            </p>
           )}
         </div>
-      )}
+
+        {/* Existing Image Section — Unchanged */}
+        {item?.image && (
+          <div className="w-28 shrink-0 overflow-hidden rounded-xl border border-line transition-all duration-300 hover:scale-105 hover:border-brand sm:w-64">
+            <SafeImage
+              src={item.image}
+              alt={item?.title || "Milestone"}
+              ratio="ratio-4-3"
+              zoom
+            />
+          </div>
+        )}
+      </div>
     </li>
   );
 }
