@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    background-color: #F8F8F6;
+    color: #171A18;
+  }
+
+  body {
+    @apply font-sans bg-surface text-ink antialiased min-h-screen;
+    overflow-x: hidden;
+  }
+
+  /* Ensure interactive elements strictly display cursor-pointer */
+  button,
+  [role="button"],
+  a,
+  select,
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"] {
+    cursor: pointer;
+  }
+
+  /* Subtle selection color matching brand */
+  ::selection {
+    background-color: #E8EFE7;
+    color: #3F6240;
+  }
+}
