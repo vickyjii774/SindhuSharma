@@ -35,12 +35,14 @@ export default function Gallery({
       if (e.key === "ArrowRight") showNext();
     };
 
+    const previousOverflow = document.body.style.overflow;
+
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
     };
   }, [active, valid.length]);
 
@@ -48,17 +50,17 @@ export default function Gallery({
 
   return (
     <>
-      {/* Gallery Grid */}
+      {/* Responsive Gallery Grid */}
       <div
-        className={`grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 ${className}`}
+        className={`grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4 ${className}`}
       >
         {valid.map((src, i) => (
           <button
-            key={src + i}
+            key={`${src}-${i}`}
             type="button"
             onClick={() => setActive(i)}
             aria-label={`Open ${altPrefix} ${i + 1} in lightbox`}
-            className="group block w-full cursor-pointer overflow-hidden rounded-sm border border-line bg-white text-left transition-all duration-300 hover:border-brand/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+            className="group block min-w-0 w-full cursor-pointer overflow-hidden rounded-md border border-line bg-white text-left transition-all duration-300 hover:border-brand/60 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
           >
             <SafeImage
               src={src}
@@ -74,7 +76,7 @@ export default function Gallery({
       {/* Lightbox */}
       {active !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm sm:p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-3 backdrop-blur-sm sm:p-6"
           role="dialog"
           aria-modal="true"
           aria-label={`${altPrefix} ${active + 1} of ${valid.length}`}
@@ -86,7 +88,7 @@ export default function Gallery({
             onClick={() => setActive(null)}
             aria-label="Close image lightbox"
             autoFocus
-            className="absolute right-4 top-4 z-20 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:right-6 sm:top-6"
+            className="absolute right-3 top-3 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:right-6 sm:top-6"
           >
             <svg
               className="h-6 w-6"
@@ -104,7 +106,7 @@ export default function Gallery({
             </svg>
           </button>
 
-          {/* Previous Image */}
+          {/* Previous Button */}
           {valid.length > 1 && (
             <button
               type="button"
@@ -113,7 +115,7 @@ export default function Gallery({
                 showPrevious();
               }}
               aria-label="Previous image"
-              className="absolute left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:left-6 sm:h-12 sm:w-12"
+              className="absolute left-1 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:left-6 sm:h-12 sm:w-12"
             >
               <svg
                 className="h-6 w-6"
@@ -132,7 +134,7 @@ export default function Gallery({
             </button>
           )}
 
-          {/* Image and Counter */}
+          {/* Active Image and Counter */}
           <div
             className="relative flex max-h-[90vh] max-w-5xl flex-col items-center overflow-hidden rounded-lg bg-black shadow-2xl"
             onClick={(e) => e.stopPropagation()}
@@ -140,10 +142,10 @@ export default function Gallery({
             <img
               src={valid[active]}
               alt={`${altPrefix} ${active + 1}`}
-              className="max-h-[82vh] max-w-full object-contain"
+              className="max-h-[78vh] max-w-full object-contain sm:max-h-[82vh]"
             />
 
-            <div className="flex w-full items-center justify-between gap-4 bg-black px-4 py-3 text-xs text-white sm:text-sm">
+            <div className="flex w-full items-center justify-between gap-4 bg-black px-3 py-3 text-xs text-white sm:px-4 sm:text-sm">
               <span className="min-w-0 truncate">
                 {altPrefix} {active + 1}
               </span>
@@ -153,7 +155,7 @@ export default function Gallery({
             </div>
           </div>
 
-          {/* Next Image */}
+          {/* Next Button */}
           {valid.length > 1 && (
             <button
               type="button"
@@ -162,7 +164,7 @@ export default function Gallery({
                 showNext();
               }}
               aria-label="Next image"
-              className="absolute right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:right-6 sm:h-12 sm:w-12"
+              className="absolute right-1 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:right-6 sm:h-12 sm:w-12"
             >
               <svg
                 className="h-6 w-6"

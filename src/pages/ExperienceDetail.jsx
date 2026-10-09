@@ -1,4 +1,3 @@
-
 import { useNavigate, useParams } from "react-router-dom";
 import { getExperience } from "../data/siteData";
 import useSEO from "../hooks/useSEO";
@@ -62,20 +61,17 @@ export default function ExperienceDetail() {
             </button>
           </div>
 
-          {/* Single Main Container */}
+          {/* Main Container */}
           <div className="overflow-hidden rounded-2xl border border-[#E8ECE8] bg-white shadow-sm">
-            {/* Header */}
+            {/* Experience Header */}
             <header className="border-b border-[#E8ECE8] p-5 sm:p-8">
-              <div className="mb-3 flex flex-wrap items-center gap-2">
-                {exp.category && (
-                  <>
-                   
-                    <span className="text-xs font-semibold uppercase tracking-wider text-ink-muted">
-                      {exp.category}
-                    </span>
-                  </>
-                )}
-              </div>
+              {exp.category && (
+                <div className="mb-3">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-ink-muted">
+                    {exp.category}
+                  </span>
+                </div>
+              )}
 
               <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
                 <div className="min-w-0">
@@ -93,13 +89,13 @@ export default function ExperienceDetail() {
                 <div className="flex shrink-0 flex-wrap gap-x-5 gap-y-2 text-xs text-ink-muted sm:justify-end sm:text-sm">
                   <span className="font-semibold text-ink">
                     {exp.period}
-                    {exp.location && ` , ${exp.location}`}
+                    {exp.location && `, ${exp.location}`}
                   </span>
                 </div>
               </div>
             </header>
 
-            {/* Main Content */}
+            {/* Main Content: Two Columns */}
             <div className="grid grid-cols-1 items-start gap-6 p-5 sm:gap-8 sm:p-8 lg:grid-cols-12">
               {/* Left Column */}
               <div className="min-w-0 space-y-6 lg:col-span-7">
@@ -116,7 +112,7 @@ export default function ExperienceDetail() {
                   </div>
                 )}
 
-                {/* About */}
+                {/* About the Experience */}
                 {exp.description && (
                   <section>
                     <h2 className="mb-3 font-serif text-xl font-bold text-ink sm:text-2xl">
@@ -126,20 +122,6 @@ export default function ExperienceDetail() {
                     <p className="text-sm leading-7 text-ink-secondary sm:text-base">
                       {exp.description}
                     </p>
-                  </section>
-                )}
-
-                {/* Gallery */}
-                {exp.gallery?.length > 0 && (
-                  <section>
-                    <h2 className="mb-4 font-serif text-xl font-bold text-ink sm:text-2xl">
-                      Project Gallery
-                    </h2>
-
-                    <Gallery
-                      images={exp.gallery}
-                      altPrefix={`${exp.organization} visual`}
-                    />
                   </section>
                 )}
               </div>
@@ -194,6 +176,7 @@ export default function ExperienceDetail() {
                               d="M5 13l4 4L19 7"
                             />
                           </svg>
+
                           <span>{item}</span>
                         </li>
                       ))}
@@ -205,7 +188,7 @@ export default function ExperienceDetail() {
                 {exp.skills?.length > 0 && (
                   <section className="border-t border-[#E8ECE8] pt-6">
                     <h2 className="mb-4 font-serif text-xl font-bold text-ink">
-                      Skills & Competencies
+                      Skills &amp; Competencies
                     </h2>
 
                     <ul className="flex flex-wrap gap-2">
@@ -221,25 +204,40 @@ export default function ExperienceDetail() {
                 )}
               </div>
             </div>
+
+            {/* Project Gallery: At the Bottom on Mobile and Desktop */}
+            {exp.gallery?.length > 0 && (
+              <section className="border-t border-[#E8ECE8] p-5 sm:p-8">
+                <h2 className="mb-4 font-serif text-xl font-bold text-ink sm:text-2xl">
+                  Project Gallery
+                </h2>
+
+                <Gallery
+                  images={exp.gallery}
+                  altPrefix={`${exp.organization} visual`}
+                  className="grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-6"
+                />
+              </section>
+            )}
           </div>
 
-         {/* Back to All Experience Button */}
-<div className="mt-5">
-  <button
-    type="button"
-    onClick={() => navigate("/experience")}
-    className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#588157] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#3F6240] hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#588157] focus-visible:ring-offset-2"
-  >
-    <span aria-hidden="true" className="text-lg leading-none">
-      ←
-    </span>
-    Back to All Experience
-  </button>
-</div>
-
+          {/* Back to All Experience Button */}
+          <div className="mt-5">
+            <button
+              type="button"
+              onClick={() => navigate("/experience")}
+              className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#588157] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#3F6240] hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#588157] focus-visible:ring-offset-2"
+            >
+              <span
+                aria-hidden="true"
+                className="text-lg leading-none"
+              >
+                ←
+              </span>
+              Back to All Experience
+            </button>
+          </div>
         </div>
-        
-
       </Container>
     </article>
   );

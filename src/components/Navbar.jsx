@@ -182,49 +182,71 @@ export default function Navbar() {
               </svg>
             </button>
 
-            {eventsDropdownOpen && (
-              <div
-                className="absolute top-full left-0 mt-3 w-56 rounded-sm bg-white py-2 shadow-xl ring-1 ring-black/5 animate-in fade-in slide-in-from-top-2 duration-150"
-                role="menu"
-                aria-orientation="vertical"
-              >
-                {/* All Events */}
-                <NavLink
-                  to="/events"
-                  end
-                  role="menuitem"
-                  className={({ isActive }) =>
-                    `block px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-colors cursor-pointer ${
-                      isActive
-                        ? "bg-brand-light text-brand-dark"
-                        : "text-ink hover:bg-surface-alt hover:text-brand"
-                    }`
-                  }
-                >
-                  All Events Overview
-                </NavLink>
+            
+{eventsDropdownOpen && (
+  <div
+    className="absolute left-0 top-full z-50 mt-3 w-60 overflow-hidden rounded-xl border border-[#E8EFE7] bg-white p-1.5 shadow-xl shadow-black/10"
+    role="menu"
+    aria-orientation="vertical"
+  >
+   
 
-                <div className="h-[1px] bg-line my-1.5" />
+    {/* All Events */}
+    <NavLink
+      to="/events"
+      end
+      role="menuitem"
+      className={({ isActive }) =>
+        `group flex items-center justify-between rounded-lg px-3 py-2.5 text-xs font-semibold transition-all duration-200 ${
+          isActive
+            ? "bg-[#E8EFE7] text-[#3F6240]"
+            : "text-[#26372B] hover:bg-[#F2F6F1] hover:text-[#3F6240]"
+        }`
+      }
+    >
+      <span>All Events Overview</span>
+      <span className="text-sm transition-transform duration-200 group-hover:translate-x-0.5">
+        →
+      </span>
+    </NavLink>
 
-                {/* Event Categories */}
-                {siteData.eventCategories.map((category) => (
-                  <NavLink
-                    key={category.slug}
-                    to={`/events/${category.slug}`}
-                    role="menuitem"
-                    className={({ isActive }) =>
-                      `block px-4 py-2 text-xs font-medium tracking-wide uppercase transition-colors cursor-pointer ${
-                        isActive
-                          ? "bg-brand-light text-brand-dark font-semibold"
-                          : "text-ink-secondary hover:bg-surface-alt hover:text-ink"
-                      }`
-                    }
-                  >
-                    {category.label}
-                  </NavLink>
-                ))}
-              </div>
-            )}
+    {/* Divider */}
+    <div className="mx-3 my-1.5 border-t border-[#E8EFE7]" />
+
+    {/* Event Categories */}
+    <div className="space-y-0.5">
+      {siteData.eventCategories.map((category, index) => (
+        <NavLink
+          key={category.slug}
+          to={`/events/${category.slug}`}
+          role="menuitem"
+          className={({ isActive }) =>
+            `group flex items-center gap-3 rounded-lg px-3 py-2.5 transition-all duration-200 ${
+              isActive
+                ? "bg-[#E8EFE7] text-[#3F6240]"
+                : "text-gray-600 hover:bg-[#F2F6F1] hover:text-[#3F6240]"
+            }`
+          }
+        >
+       
+
+          <span className="flex-1 text-xs font-medium">
+            {category.label}
+          </span>
+
+          <span className="text-xs text-gray-300 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-[#588157]">
+            →
+          </span>
+        </NavLink>
+      ))}
+    </div>
+
+    
+    
+  </div>
+)}
+
+
           </div>
 
           {/* Contact */}

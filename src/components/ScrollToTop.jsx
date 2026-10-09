@@ -1,21 +1,63 @@
 
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function ScrollToTop() {
   const [showButton, setShowButton] = useState(false);
+  const { pathname } = useLocation();
 
+  // Scroll to the top whenever the page route changes.
+  useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "instant",
+  });
+
+  const handleNavigationClick = (event) => {
+    const link = event.target.closest("a");
+
+    if (!link) return;
+
+    const url = new URL(link.href, window.location.origin);
+
+    if (
+      url.origin === window.location.origin &&
+      url.pathname === window.location.pathname
+    ) {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  document.addEventListener("click", handleNavigationClick);
+
+  return () => {
+    document.removeEventListener("click", handleNavigationClick);
+  };
+}, [pathname]);
+
+  // Show the floating button after scrolling down.
   useEffect(() => {
     const handleScroll = () => {
       setShowButton(window.scrollY > 300);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  // Smooth scroll when the floating button is clicked.
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,

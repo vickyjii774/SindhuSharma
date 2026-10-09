@@ -1,5 +1,4 @@
-
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getEvent } from "../data/siteData";
 import useSEO from "../hooks/useSEO";
 import SafeImage from "../components/SafeImage";
@@ -78,12 +77,10 @@ export default function EventDetail() {
             </button>
           </div>
 
-          {/* Main Details Container */}
+          {/* Main Event Details Card */}
           <div className="overflow-hidden rounded-2xl border border-[#E8ECE8] bg-white shadow-sm">
             {/* Event Header */}
             <header className="border-b border-[#E8ECE8] p-5 sm:p-8">
-             
-
               <div className="mb-3 flex flex-wrap items-center gap-2">
                 <span className="rounded-full bg-[#E8F0EA] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#3F6240] sm:text-xs">
                   {category.label}
@@ -108,11 +105,12 @@ export default function EventDetail() {
                     <span className="mb-1 block text-[10px] uppercase tracking-wider text-[#8A938D] sm:text-xs">
                       Date
                     </span>
+
                     <span className="font-semibold text-[#17251D]">
-                      {event.date || "Date not specified"}, {event.location}
-                      </span>
-                    </div>
-                
+                      {event.date || "Date not specified"}
+                      {event.location ? `, ${event.location}` : ""}
+                    </span>
+                  </div>
                 </div>
               </div>
             </header>
@@ -146,20 +144,6 @@ export default function EventDetail() {
                     </p>
                   </section>
                 )}
-
-                {/* Event Gallery */}
-                {event.gallery?.length > 0 && (
-                  <section className="border-t border-[#E8ECE8] pt-6">
-                    <h2 className="mb-4 font-serif text-xl font-bold text-[#17251D] sm:text-2xl">
-                      Event Gallery
-                    </h2>
-
-                    <Gallery
-                      images={event.gallery}
-                      altPrefix={`${event.title} photograph`}
-                    />
-                  </section>
-                )}
               </div>
 
               {/* Right Column */}
@@ -175,22 +159,25 @@ export default function EventDetail() {
                       <span className="mb-1 block text-[10px] font-semibold uppercase tracking-wider text-[#8A938D]">
                         Category
                       </span>
+
                       <p className="text-sm font-semibold text-[#588157]">
                         {category.label}
                       </p>
                     </div>
 
-                    {event.date && (
+                    {(event.date || event.location) && (
                       <div className="border-t border-[#E8ECE8] pt-4">
                         <span className="mb-1 block text-[10px] font-semibold uppercase tracking-wider text-[#8A938D]">
                           Event Date & Location
                         </span>
+
                         <p className="text-sm font-medium text-[#17251D]">
-                          {event.date} , {event.location}
+                          {[event.date, event.location]
+                            .filter(Boolean)
+                            .join(", ")}
                         </p>
                       </div>
                     )}
-
                   </div>
                 </section>
 
@@ -211,6 +198,27 @@ export default function EventDetail() {
                 ))}
               </div>
             </div>
+
+            {/* Event Gallery: Full Width at the Bottom */}
+            {event.gallery?.length > 0 && (
+              <section className="border-t border-[#E8ECE8] p-5 sm:p-8">
+                <div className="mb-5">
+                  <h2 className="font-serif text-xl font-bold text-[#17251D] sm:text-2xl">
+                    Event Gallery
+                  </h2>
+
+                  <p className="mt-2 text-sm leading-6 text-[#6C746F]">
+                    Explore photos and highlights from this event.
+                  </p>
+                </div>
+
+                <Gallery
+                  images={event.gallery}
+                  altPrefix={`${event.title} photograph`}
+                  className="grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-6"
+                />
+              </section>
+            )}
           </div>
 
           {/* Bottom Navigation */}
