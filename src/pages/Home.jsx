@@ -1,5 +1,4 @@
 
-import { siteData } from "../data/siteData";
 import useSEO from "../hooks/useSEO";
 import Hero from "../components/Hero";
 import Button from "../components/Button";
@@ -8,6 +7,9 @@ import ExperienceCard from "../components/ExperienceCard";
 import CategoryCard from "../components/CategoryCard";
 import Reveal from "../components/Reveal";
 import Container from "../components/Container";
+import { Link } from "react-router-dom";
+import { siteData, getCategoryImage } from "../data/siteData";
+
 import {
   EducationSection,
   SkillsSection,
@@ -52,9 +54,7 @@ export default function Home() {
           <Reveal>
             <div className="grid grid-cols-12 gap-8 lg:gap-16 items-start">
               <div className="col-span-4">
-                <span className="block font-sans text-xs sm:text-sm font-semibold tracking-widest uppercase text-brand mb-2">
-                  About
-                </span>
+                
 
                 <h2
                   id="intro-h"
@@ -78,67 +78,73 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 3. Education Section */}
-      <EducationSection />
 
       {/* 4. Skills Section */}
       <SkillsSection />
+       <AdvocacySection/>
 
-      {/* 5. Experience Preview */}
-      <section
-        className="py-20 sm:py-24 lg:py-28 bg-white border-b border-line"
-        aria-labelledby="exp-h"
-      >
-        <Container>
-          <Reveal>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-14">
-              <SectionHeading
-                eyebrow="Career & Impact"
-                title="Selected Experience"
-                id="exp-h"
-                text="Highlights of professional positions, architectural visualization, and leadership."
-                className="mb-0"
+<section
+  className="bg-surface-alt py-20 sm:py-24 lg:py-28"
+  aria-labelledby="events-h"
+>
+  <Container>
+    <Reveal>
+      <div className="mb-10 flex flex-col justify-between sm:mb-12 sm:flex-row sm:items-end">
+        <SectionHeading
+          title="Featured Events"
+          id="events-h"
+          text="Representing ideas and youth voice across local, national, and global platforms."
+          className="mb-0"
+        />
+
+        <div className="mt-5 sm:mt-0">
+          <Button to="/events">
+            Browse All Categories →
+          </Button>
+        </div>
+      </div>
+    </Reveal>
+
+    {/* Four Featured Event Categories */}
+    <Reveal>
+      <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4 lg:gap-6">
+        {siteData.eventCategories.map((category) => (
+          <Link
+            key={category.slug}
+            to={`/events/${category.slug}`}
+            className="group min-w-0 overflow-hidden rounded-xl border border-[#E0E7E0] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#AFC4B0] hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#588157]"
+          >
+            <div className="aspect-[4/3] overflow-hidden bg-[#E8EFE7]">
+              <img
+                src={getCategoryImage(category)}
+                alt={category.label}
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
               />
-
-              <div className="mt-6 sm:mt-0">
-                <Button to="/experience" variant="outline">
-                  All Experience →
-                </Button>
-              </div>
             </div>
 
-        
-          </Reveal>
-        </Container>
-      </section>
+            <div className="p-3 sm:p-5">
+              <h3 className="font-serif text-sm font-bold leading-snug text-[#17251D] transition-colors group-hover:text-[#588157] sm:text-lg">
+                {category.label}
+              </h3>
 
+              <p className="mt-2 text-xs leading-5 text-[#626D65] sm:text-sm">
+                {category.description}
+              </p>
 
-      <section
-        className="py-20 sm:py-24 lg:py-28 bg-surface-alt"
-        aria-labelledby="events-h"
-      >
-        <Container>
-          <Reveal>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16">
-              <SectionHeading
-                eyebrow="Engagement & Stages"
-                title="Featured Events"
-                id="events-h"
-                text="Representing ideas and youth voice across local, national, and global platforms."
-                className="mb-0"
-              />
-
-              <div className="mt-6 sm:mt-0">
-                <Button to="/events">
-                  Browse All Categories →
-                </Button>
-              </div>
+              <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[#588157]">
+                Explore Events
+                <span className="transition-transform group-hover:translate-x-1">
+                  →
+                </span>
+              </span>
             </div>
-
-         
-          </Reveal>
-        </Container>
-      </section>
+          </Link>
+        ))}
+      </div>
+    </Reveal>
+  </Container>
+</section>
     </div>
   );
 }

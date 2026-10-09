@@ -1,3 +1,4 @@
+
 import { siteData } from "../data/siteData";
 import useSEO from "../hooks/useSEO";
 import CategoryCard from "../components/CategoryCard";
@@ -8,21 +9,32 @@ import Reveal from "../components/Reveal";
 export default function Events() {
   useSEO({
     page: "Events",
-    description: "Conferences, forums, community workshops, and leadership engagements.",
+    description:
+      "Conferences, forums, community workshops, and leadership engagements.",
   });
 
-  const international = siteData.eventCategories.find((c) => c.slug === "international");
-  const national = siteData.eventCategories.find((c) => c.slug === "national");
-  const schoolCommunity = siteData.eventCategories.find((c) => c.slug === "school-community");
-  const grassroot = siteData.eventCategories.find((c) => c.slug === "grassroot-local");
+  const categories = [
+    siteData.eventCategories.find(
+      (category) => category.slug === "international"
+    ),
+    siteData.eventCategories.find(
+      (category) => category.slug === "national"
+    ),
+    siteData.eventCategories.find(
+      (category) => category.slug === "school-community"
+    ),
+    siteData.eventCategories.find(
+      (category) => category.slug === "grassroot-local"
+    ),
+  ].filter(Boolean);
 
   return (
-    <div className="pt-24 sm:pt-28 lg:pt-32 pb-20 sm:pb-28">
+    <div className="pb-20 pt-24 sm:pb-28 sm:pt-28 lg:pt-32">
       {/* Page Header */}
-      <section className="py-12 sm:py-16 bg-surface border-b border-line mb-12 sm:mb-16">
+      <section className="mb-10 border-b border-line bg-surface py-10 sm:mb-12 sm:py-14">
         <Container>
           <SectionHeading
-            eyebrow="Participation & Engagements"
+           
             title="Events Overview"
             text="Explore initiatives and speaking engagements organized across four distinct spheres of impact."
             className="mb-0"
@@ -30,26 +42,21 @@ export default function Events() {
         </Container>
       </section>
 
-      {/* Visual Hierarchy Layout */}
+      {/* Events Grid */}
       <Container>
         <Reveal>
-          <div className="space-y-8 sm:space-y-10">
-            {/* 1. International - Prominent / Featured */}
-            {international && (
-              <CategoryCard category={international} featured={true} />
-            )}
-
-            {/* 2. Middle Grid: National & School/Community */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
-              {national && <CategoryCard category={national} />}
-              {schoolCommunity && <CategoryCard category={schoolCommunity} />}
+          <section className="mx-auto max-w-full px-0 pt-2 sm:px-2 lg:px-0">
+             <div className="grid grid-cols-2 items-stretch gap-3 sm:gap-5 lg:grid-cols-4 lg:gap-6">
+                {categories.map((category) => (
+                <div
+                  key={category.slug}
+                  className="group min-w-0 h-full "
+                >
+                  <CategoryCard category={category} />
+                </div>
+              ))}
             </div>
-
-            {/* 3. Grassroot & Local Level - Prominent / Featured */}
-            {grassroot && (
-              <CategoryCard category={grassroot} featured={true} />
-            )}
-          </div>
+          </section>
         </Reveal>
       </Container>
     </div>

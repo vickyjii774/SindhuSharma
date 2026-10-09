@@ -1,15 +1,16 @@
-import { useParams, Link } from "react-router-dom";
+
+import { useNavigate, useParams } from "react-router-dom";
 import { getExperience } from "../data/siteData";
 import useSEO from "../hooks/useSEO";
 import SafeImage from "../components/SafeImage";
 import SkillCard from "../components/SkillCard";
 import Gallery from "../components/Gallery";
-import Button from "../components/Button";
 import NotFoundState from "../components/NotFoundState";
 import Container from "../components/Container";
 
 export default function ExperienceDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const exp = getExperience(id);
 
   useSEO({
@@ -32,148 +33,213 @@ export default function ExperienceDetail() {
   }
 
   return (
-    <article className="pt-24 sm:pt-28 lg:pt-32 pb-20 sm:pb-28">
-      {/* Header Case Study Title */}
-      <section className="py-12 sm:py-16 bg-surface border-b border-line">
-        <Container>
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <Link
-                to="/experience"
-                className="text-xs font-semibold tracking-wider uppercase text-brand hover:text-brand-dark cursor-pointer transition-colors"
+    <article className="min-h-screen bg-surface pb-10 pt-20 sm:pt-24">
+      <Container>
+        <div className="mx-auto max-w-6xl">
+          {/* Close Button */}
+          <div className="mb-3 flex justify-end">
+            <button
+              type="button"
+              onClick={() => navigate("/experience")}
+              aria-label="Close and return to experience page"
+              title="Back to Experience"
+              className="group flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[#E8ECE8] bg-white text-ink-secondary shadow-sm transition-all duration-200 hover:border-red-500 hover:bg-red-500 hover:text-white hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+            >
+              <svg
+                className="h-5 w-5 transition-transform duration-200 group-hover:rotate-90"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
               >
-                ← Experience
-              </Link>
-              {exp.category && (
-                <>
-                  <span className="text-line">•</span>
-                  <span className="text-xs font-semibold tracking-wider uppercase text-ink-muted">
-                    {exp.category}
-                  </span>
-                </>
-              )}
-            </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
 
-            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink leading-tight">
-              {exp.organization}
-            </h1>
-
-            <p className="mt-3 font-serif text-xl sm:text-2xl text-brand font-medium italic">
-              {exp.role}
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-4 sm:gap-8 text-xs sm:text-sm font-medium text-ink-secondary pt-4 border-t border-line/60">
-              <div>
-                <span className="text-ink-muted block text-xs uppercase tracking-wider">Duration</span>
-                <span className="text-ink font-semibold">{exp.period}</span>
+          {/* Single Main Container */}
+          <div className="overflow-hidden rounded-2xl border border-[#E8ECE8] bg-white shadow-sm">
+            {/* Header */}
+            <header className="border-b border-[#E8ECE8] p-5 sm:p-8">
+              <div className="mb-3 flex flex-wrap items-center gap-2">
+                {exp.category && (
+                  <>
+                   
+                    <span className="text-xs font-semibold uppercase tracking-wider text-ink-muted">
+                      {exp.category}
+                    </span>
+                  </>
+                )}
               </div>
-              {exp.location && (
-                <div>
-                  <span className="text-ink-muted block text-xs uppercase tracking-wider">Location</span>
-                  <span className="text-ink font-semibold">{exp.location}</span>
+
+              <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+                <div className="min-w-0">
+                  <h1 className="break-words font-serif text-2xl font-bold leading-tight tracking-tight text-ink sm:text-3xl lg:text-4xl">
+                    {exp.organization}
+                  </h1>
+
+                  {exp.role && (
+                    <p className="mt-2 font-serif text-lg font-medium italic text-brand sm:text-xl">
+                      {exp.role}
+                    </p>
+                  )}
                 </div>
-              )}
+
+                <div className="flex shrink-0 flex-wrap gap-x-5 gap-y-2 text-xs text-ink-muted sm:justify-end sm:text-sm">
+                  <span className="font-semibold text-ink">
+                    {exp.period}
+                    {exp.location && ` , ${exp.location}`}
+                  </span>
+                </div>
+              </div>
+            </header>
+
+            {/* Main Content */}
+            <div className="grid grid-cols-1 items-start gap-6 p-5 sm:gap-8 sm:p-8 lg:grid-cols-12">
+              {/* Left Column */}
+              <div className="min-w-0 space-y-6 lg:col-span-7">
+                {/* Cover Image */}
+                {exp.image && (
+                  <div className="overflow-hidden rounded-xl">
+                    <SafeImage
+                      src={exp.image}
+                      alt={`${exp.organization} — ${exp.role || "Experience"}`}
+                      ratio="ratio-4-3"
+                      eager
+                      className="w-full"
+                    />
+                  </div>
+                )}
+
+                {/* About */}
+                {exp.description && (
+                  <section>
+                    <h2 className="mb-3 font-serif text-xl font-bold text-ink sm:text-2xl">
+                      About the Experience
+                    </h2>
+
+                    <p className="text-sm leading-7 text-ink-secondary sm:text-base">
+                      {exp.description}
+                    </p>
+                  </section>
+                )}
+
+                {/* Gallery */}
+                {exp.gallery?.length > 0 && (
+                  <section>
+                    <h2 className="mb-4 font-serif text-xl font-bold text-ink sm:text-2xl">
+                      Project Gallery
+                    </h2>
+
+                    <Gallery
+                      images={exp.gallery}
+                      altPrefix={`${exp.organization} visual`}
+                    />
+                  </section>
+                )}
+              </div>
+
+              {/* Right Column */}
+              <div className="min-w-0 space-y-6 lg:col-span-5">
+                {/* Responsibilities */}
+                {exp.responsibilities?.length > 0 && (
+                  <section>
+                    <h2 className="mb-4 font-serif text-xl font-bold text-ink">
+                      Key Responsibilities
+                    </h2>
+
+                    <ul className="space-y-3">
+                      {exp.responsibilities.map((item, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start gap-3 text-sm leading-6 text-ink-secondary"
+                        >
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+
+                {/* Achievements */}
+                {exp.achievements?.length > 0 && (
+                  <section className="border-t border-[#E8ECE8] pt-6">
+                    <h2 className="mb-4 font-serif text-xl font-bold text-ink">
+                      Key Achievements
+                    </h2>
+
+                    <ul className="space-y-3">
+                      {exp.achievements.map((item, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start gap-3 text-sm leading-6 text-ink-secondary"
+                        >
+                          <svg
+                            className="mt-0.5 h-5 w-5 shrink-0 text-brand"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+
+                {/* Skills */}
+                {exp.skills?.length > 0 && (
+                  <section className="border-t border-[#E8ECE8] pt-6">
+                    <h2 className="mb-4 font-serif text-xl font-bold text-ink">
+                      Skills & Competencies
+                    </h2>
+
+                    <ul className="flex flex-wrap gap-2">
+                      {exp.skills.map((skill) => (
+                        <SkillCard
+                          key={skill}
+                          skill={skill}
+                          small
+                        />
+                      ))}
+                    </ul>
+                  </section>
+                )}
+              </div>
             </div>
           </div>
-        </Container>
-      </section>
 
-      {/* Main Content */}
-      <Container className="mt-12 sm:mt-16">
-        <div className="max-w-4xl mx-auto space-y-12 sm:space-y-16">
-          {/* Large Cover Image if available */}
-          {exp.image && (
-            <div className="rounded-sm overflow-hidden border border-line shadow-sm">
-              <SafeImage
-                src={exp.image}
-                alt={`${exp.organization} — ${exp.role}`}
-                ratio="ratio-16-9"
-                eager
-                className="w-full"
-              />
-            </div>
-          )}
+         {/* Back to All Experience Button */}
+<div className="mt-5">
+  <button
+    type="button"
+    onClick={() => navigate("/experience")}
+    className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#588157] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#3F6240] hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#588157] focus-visible:ring-offset-2"
+  >
+    <span aria-hidden="true" className="text-lg leading-none">
+      ←
+    </span>
+    Back to All Experience
+  </button>
+</div>
 
-          {/* About Section */}
-          <section className="bg-white border border-line rounded-sm p-6 sm:p-10">
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ink mb-4">
-              About the Experience
-            </h2>
-            <p className="text-base sm:text-lg text-ink-secondary leading-relaxed">
-              {exp.description}
-            </p>
-          </section>
-
-          {/* Responsibilities */}
-          {exp.responsibilities?.length > 0 && (
-            <section className="bg-white border border-line rounded-sm p-6 sm:p-10">
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ink mb-6">
-                Key Responsibilities
-              </h2>
-              <ul className="space-y-3.5">
-                {exp.responsibilities.map((r, i) => (
-                  <li key={i} className="flex items-start gap-3 text-base text-ink-secondary leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand mt-2.5 shrink-0" />
-                    <span>{r}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          {/* Achievements */}
-          {exp.achievements?.length > 0 && (
-            <section className="bg-white border border-line rounded-sm p-6 sm:p-10">
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ink mb-6">
-                Key Achievements
-              </h2>
-              <ul className="space-y-3.5">
-                {exp.achievements.map((a, i) => (
-                  <li key={i} className="flex items-start gap-3 text-base text-ink-secondary leading-relaxed">
-                    <svg className="w-5 h-5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span>{a}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          {/* Applied Skills */}
-          {exp.skills?.length > 0 && (
-            <section className="bg-white border border-line rounded-sm p-6 sm:p-10">
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ink mb-4">
-                Technologies & Tools Applied
-              </h2>
-              <ul className="flex flex-wrap gap-2.5">
-                {exp.skills.map((s) => (
-                  <SkillCard key={s} skill={s} small />
-                ))}
-              </ul>
-            </section>
-          )}
-
-          {/* Gallery */}
-          {exp.gallery?.length > 0 && (
-            <section className="space-y-6">
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ink">
-                Project Gallery
-              </h2>
-              <Gallery images={exp.gallery} altPrefix={`${exp.organization} visual`} />
-            </section>
-          )}
-
-          {/* Navigation Back */}
-          <div className="pt-8 border-t border-line flex items-center justify-between">
-            <Button to="/experience" variant="outline">
-              ← Back to All Experience
-            </Button>
-            <Button to="/contact">
-              Discuss Collaboration
-            </Button>
-          </div>
         </div>
+        
+
       </Container>
     </article>
   );

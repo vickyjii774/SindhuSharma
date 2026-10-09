@@ -1,39 +1,43 @@
 import SafeImage from "./SafeImage";
 import Gallery from "./Gallery";
 
-/**
- * AdvocacyCard for causes and social impact initiatives.
- * Large visual presentation with title, description, and gallery if available.
- */
 export default function AdvocacyCard({ item }) {
   return (
-    <article className="group bg-white border border-line rounded-sm overflow-hidden transition-all duration-300 hover:border-brand/60 hover:shadow-md flex flex-col">
-      <SafeImage
-        src={item.image}
-        alt={item.title}
-        ratio="ratio-16-9"
-        zoom
-        className="w-full"
-      />
-
-      <div className="flex flex-col flex-1 p-6 sm:p-8">
-        <h3 className="font-serif text-2xl sm:text-3xl font-bold text-ink group-hover:text-brand transition-colors duration-200">
+    <div className="grid grid-cols-2 items-start gap-3 sm:gap-6 lg:gap-10">
+      {/* Left: Text Without Container */}
+      <div className="flex min-w-0 flex-col py-1 sm:py-3">
+        <h3 className="font-serif text-base font-bold leading-snug text-ink transition-colors duration-200 hover:text-brand sm:text-2xl lg:text-3xl">
           {item.title}
         </h3>
 
-        <p className="mt-4 text-sm sm:text-base text-ink-secondary leading-relaxed">
+        <p className="mt-2 text-xs leading-relaxed text-ink-secondary sm:mt-4 sm:text-sm lg:text-base lg:leading-7">
           {item.description}
         </p>
 
         {item.gallery && item.gallery.length > 0 && (
-          <div className="mt-6 pt-6 border-t border-line">
-            <h4 className="text-xs font-semibold tracking-wider uppercase text-brand mb-3">
+          <div className="mt-4 border-t border-line pt-4 sm:mt-6 sm:pt-6">
+            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-brand">
               Gallery
             </h4>
-            <Gallery images={item.gallery} altPrefix={item.title} />
+
+            <Gallery
+              images={item.gallery}
+              altPrefix={item.title}
+            />
           </div>
         )}
       </div>
-    </article>
+
+      {/* Right: Image Container */}
+      <div className="min-w-0 overflow-hidden rounded-xl border border-line bg-white shadow-sm">
+        <SafeImage
+          src={item.image}
+          alt={item.title}
+          ratio="ratio-4-3"
+          zoom
+          className="w-full"
+        />
+      </div>
+    </div>
   );
 }

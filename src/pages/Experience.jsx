@@ -8,7 +8,7 @@ import Reveal from "../components/Reveal";
 export default function Experience() {
   useSEO({
     page: "Experience",
-    description: "Professional journey, architectural visualization, freelance development, and leadership roles.",
+    description: "Professional journey and roles.",
   });
 
   return (
@@ -17,7 +17,6 @@ export default function Experience() {
       <section className="py-12 sm:py-16 bg-surface border-b border-line mb-12 sm:mb-16">
         <Container>
           <SectionHeading
-            eyebrow="Career Journey"
             title="Experience & Leadership"
             text="A comprehensive overview of architectural visualization, web development, youth advocacy, and volunteer leadership."
             className="mb-0"
@@ -28,7 +27,7 @@ export default function Experience() {
       {/* Experience Timeline / Cards */}
       <Container>
         <Reveal>
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-6 sm:space-y-8 ">
             {siteData.experiences.map((exp) => (
               <ExperienceCard key={exp.id} experience={exp} />
             ))}

@@ -1,62 +1,79 @@
+
 import { Link } from "react-router-dom";
+import { ArrowRight, CalendarDays } from "lucide-react";
 import SafeImage from "./SafeImage";
 import { getCategoryImage } from "../data/siteData";
 
 /**
- * Event category card used on Home and Events overview.
+ * Reusable event category card for the Home page
+ * and Events overview page.
  */
-export default function CategoryCard({ category, featured = false }) {
+export default function CategoryCard({ category }) {
+  if (!category) return null;
+
   const detailUrl = `/events/${category.slug}`;
   const image = getCategoryImage(category);
 
   return (
-    <article
-      className={`group bg-white border border-line rounded-sm overflow-hidden transition-all duration-300 hover:border-brand/60 hover:shadow-md flex flex-col ${
-        featured ? "md:grid md:grid-cols-12 md:items-center" : ""
-      }`}
-    >
+    <article className="group flex h-full min-w-0 flex-col overflow-hidden rounded-xl border border-[#E0E7E0] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#AFC4B0] hover:shadow-lg">
+      {/* Category Image */}
       <Link
         to={detailUrl}
-        className={`block overflow-hidden cursor-pointer ${
-          featured ? "md:col-span-6 lg:col-span-7 h-full" : ""
-        }`}
         aria-label={`Explore ${category.label} events`}
+        className="block overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#588157]"
       >
         <SafeImage
           src={image}
           alt={`${category.label} events`}
-          ratio={featured ? "ratio-16-9" : "ratio-4-3"}
+          ratio="ratio-4-3"
           zoom
-          className="w-full h-full object-cover"
+          className="w-full"
         />
       </Link>
 
-      <div
-        className={`flex flex-col flex-1 p-6 sm:p-8 ${
-          featured ? "md:col-span-6 lg:col-span-5" : ""
-        }`}
-      >
-        <span className="font-sans text-xs font-semibold tracking-widest uppercase text-brand mb-2">
-          Category
-        </span>
+      {/* Category Content */}
+      <div className="flex flex-1 flex-col p-4 sm:p-5 lg:p-6">
+        {/* Eyebrow */}
+        <div className="mb-2 flex items-center gap-2">
+          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#E8F0EA] text-[#588157] transition-colors duration-300 group-hover:bg-[#588157] group-hover:text-white">
+            <CalendarDays size={15} aria-hidden="true" />
+          </span>
 
-        <h3 className="font-serif text-2xl sm:text-3xl font-bold text-ink group-hover:text-brand transition-colors duration-200">
-          <Link to={detailUrl} className="cursor-pointer">
+          <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#588157] sm:text-xs">
+            Event Category
+          </span>
+        </div>
+
+        {/* Title */}
+        <h3 className="font-serif text-lg font-bold leading-snug text-[#17251D] transition-colors duration-200 group-hover:text-[#588157] sm:text-xl lg:text-2xl">
+          <Link
+            to={detailUrl}
+            className="rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#588157]"
+          >
             {category.label}
           </Link>
         </h3>
 
-        <p className="mt-3 text-sm sm:text-base text-ink-secondary leading-relaxed line-clamp-3 mb-6">
-          {category.description}
-        </p>
+        {/* Description */}
+        {category.description && (
+          <p className="mt-2 mb-5 line-clamp-3 text-sm leading-6 text-[#626D65]">
+            {category.description}
+          </p>
+        )}
 
-        <div className="mt-auto pt-4 border-t border-line/60">
+        {/* Explore Button */}
+        <div className="mt-auto border-t border-[#E8ECE8] pt-4">
           <Link
             to={detailUrl}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase text-brand hover:text-brand-dark transition-colors cursor-pointer group-hover:translate-x-1 duration-200"
+            aria-label={`Explore ${category.label} events`}
+            className="inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-lg bg-[#588157] px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#3F6240] hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#588157] focus-visible:ring-offset-2 sm:w-auto"
           >
             <span>Explore Events</span>
-            <span aria-hidden="true">→</span>
+            <ArrowRight
+              size={15}
+              className="transition-transform duration-200 group-hover:translate-x-1"
+              aria-hidden="true"
+            />
           </Link>
         </div>
       </div>

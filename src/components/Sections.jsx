@@ -72,7 +72,7 @@ export function MilestonesSection() {
       <Container>
         <Reveal>
           <SectionHeading
-            eyebrow="Key Moments"
+            
             title="Milestones"
             id="milestones-h"
             text="Defining steps in leadership, advocacy, and professional growth."
@@ -114,7 +114,7 @@ export function AdvocacySection() {
       <Container>
         <Reveal>
           <SectionHeading
-            eyebrow="Voice & Action"
+           
             title="Advocacy & Causes"
             id="advocacy-h"
             text="Initiatives, grassroots causes, and public speaking engagements that Sindhu champion."

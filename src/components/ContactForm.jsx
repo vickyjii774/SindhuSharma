@@ -1,71 +1,170 @@
+
 import { useState } from "react";
 import Button from "./Button";
 
-const initial = { name: "", email: "", subject: "", message: "", website: "" };
+const initial = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+  website: "",
+};
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const validate = (v) => {
-  const e = {};
-  if (!v.name.trim()) e.name = "Please enter your name.";
-  if (!v.email.trim()) e.email = "Please enter your email.";
-  else if (!EMAIL_RE.test(v.email)) e.email = "Please enter a valid email address.";
-  if (!v.subject.trim()) e.subject = "Please add a subject.";
-  if (!v.message.trim()) e.message = "Please write a message.";
-  else if (v.message.trim().length < 10) e.message = "Message must be at least 10 characters.";
-  return e;
+const validate = (values) => {
+  const errors = {};
+
+  if (!values.name.trim()) {
+    errors.name = "Please enter your name.";
+  }
+
+  if (!values.email.trim()) {
+    errors.email = "Please enter your email.";
+  } else if (!EMAIL_RE.test(values.email.trim())) {
+    errors.email = "Please enter a valid email address.";
+  }
+
+  if (!values.subject.trim()) {
+    errors.subject = "Please add a subject.";
+  }
+
+  if (!values.message.trim()) {
+    errors.message = "Please write a message.";
+  } else if (values.message.trim().length < 10) {
+    errors.message = "Message must be at least 10 characters.";
+  }
+
+  return errors;
 };
+
+const inputBase =
+  "w-full rounded-xl border bg-surface-alt px-4 py-3.5 text-sm text-ink placeholder:text-ink-muted/60 transition-all duration-200 hover:border-brand/50 focus:border-brand focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand/10 disabled:cursor-not-allowed disabled:opacity-60";
+
+const labelClass =
+  "mb-2 block text-xs font-semibold uppercase tracking-wider text-ink";
+
+function FieldError({ id, message }) {
+  if (!message) return null;
+
+  return (
+    <p
+      id={id}
+      className="mt-2 flex items-start gap-2 text-xs font-medium leading-5 text-red-600"
+      role="alert"
+    >
+      <span aria-hidden="true">!</span>
+      <span>{message}</span>
+    </p>
+  );
+}
 
 export default function ContactForm() {
   const [values, setValues] = useState(initial);
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("idle"); // idle | sending | success | error
-
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setValues((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const found = validate(values);
-    setErrors(found);
-    if (Object.keys(found).length) return;
-
-    setStatus("sending");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
-      if (!res.ok) throw new Error("Request failed");
-      setStatus("success");
-      setValues(initial);
-    } catch {
-      setStatus("error");
-    }
-  };
+  const [status, setStatus] = useState("idle");
+  const [serverMessage, setServerMessage] = useState("");
 
   const sending = status === "sending";
 
+  const onChange = (event) => {
+    const { name, value } = event.target;
+
+    setValues((previous) => ({
+      ...previous,
+      [name]: value,
+    }));
+
+    if (errors[name]) {
+      setErrors((previous) => ({
+        ...previous,
+        [name]: undefined,
+      }));
+    }
+
+    if (status === "error") {
+      setStatus("idle");
+      setServerMessage("");
+    }
+  };
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+
+    // Honeypot: silently stop automated submissions.
+    if (values.website.trim()) {
+      setStatus("success");
+      setValues(initial);
+      return;
+    }
+
+    const found = validate(values);
+    setErrors(found);
+    setServerMessage("");
+
+    if (Object.keys(found).length > 0) {
+      const firstInvalidField = Object.keys(found)[0];
+      document.getElementById(`contact-${firstInvalidField}`)?.focus();
+      return;
+    }
+
+    setStatus("sending");
+
+    try {
+      const payload = {
+        name: values.name.trim(),
+        email: values.email.trim(),
+        subject: values.subject.trim(),
+        message: values.message.trim(),
+        website: values.website,
+      };
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        let message = "Unable to send your message. Please try again.";
+
+        try {
+          const data = await response.json();
+
+          if (typeof data?.message === "string") {
+            message = data.message;
+          }
+        } catch {
+          // Keep the default message if the response isn't JSON.
+        }
+
+        throw new Error(message);
+      }
+
+      setStatus("success");
+      setValues(initial);
+      setErrors({});
+    } catch (error) {
+      setStatus("error");
+      setServerMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again."
+      );
+    }
+  };
+
   return (
-    <form
-      className="bg-white border border-line rounded-sm p-6 sm:p-8 lg:p-10 shadow-xs"
-      onSubmit={onSubmit}
-      noValidate
-    >
-      <div className="space-y-6">
+    <form className="w-full" onSubmit={onSubmit} noValidate>
+      <div className="space-y-5 sm:space-y-6">
         {/* Name */}
         <div>
-          <label
-            htmlFor="contact-name"
-            className="block text-xs font-semibold tracking-wider uppercase text-ink mb-2"
-          >
+          <label htmlFor="contact-name" className={labelClass}>
             Your Name <span className="text-brand">*</span>
           </label>
+
           <input
             id="contact-name"
             name="name"
@@ -75,28 +174,30 @@ export default function ContactForm() {
             required
             autoComplete="name"
             disabled={sending}
-            placeholder="Jane Doe"
+            placeholder="Your full name"
             aria-invalid={Boolean(errors.name)}
-            aria-describedby={errors.name ? "contact-name-error" : undefined}
-            className={`w-full px-4 py-3 text-sm rounded-sm bg-surface-alt border text-ink placeholder:text-ink-muted/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-colors duration-200 ${
-              errors.name ? "border-red-500 bg-red-50/20" : "border-line"
+            aria-describedby={
+              errors.name ? "contact-name-error" : undefined
+            }
+            className={`${inputBase} ${
+              errors.name
+                ? "border-red-500 bg-red-50/30"
+                : "border-line"
             }`}
           />
-          {errors.name && (
-            <p id="contact-name-error" className="mt-1.5 text-xs text-red-600 font-medium" role="alert">
-              {errors.name}
-            </p>
-          )}
+
+          <FieldError
+            id="contact-name-error"
+            message={errors.name}
+          />
         </div>
 
         {/* Email */}
         <div>
-          <label
-            htmlFor="contact-email"
-            className="block text-xs font-semibold tracking-wider uppercase text-ink mb-2"
-          >
-            Email Address <span className="text-brand">*</span>
+          <label htmlFor="contact-email" className={labelClass}>
+            Your Email <span className="text-brand">*</span>
           </label>
+
           <input
             id="contact-email"
             name="email"
@@ -106,28 +207,30 @@ export default function ContactForm() {
             required
             autoComplete="email"
             disabled={sending}
-            placeholder="jane@example.com"
+            placeholder="you@example.com"
             aria-invalid={Boolean(errors.email)}
-            aria-describedby={errors.email ? "contact-email-error" : undefined}
-            className={`w-full px-4 py-3 text-sm rounded-sm bg-surface-alt border text-ink placeholder:text-ink-muted/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-colors duration-200 ${
-              errors.email ? "border-red-500 bg-red-50/20" : "border-line"
+            aria-describedby={
+              errors.email ? "contact-email-error" : undefined
+            }
+            className={`${inputBase} ${
+              errors.email
+                ? "border-red-500 bg-red-50/30"
+                : "border-line"
             }`}
           />
-          {errors.email && (
-            <p id="contact-email-error" className="mt-1.5 text-xs text-red-600 font-medium" role="alert">
-              {errors.email}
-            </p>
-          )}
+
+          <FieldError
+            id="contact-email-error"
+            message={errors.email}
+          />
         </div>
 
         {/* Subject */}
         <div>
-          <label
-            htmlFor="contact-subject"
-            className="block text-xs font-semibold tracking-wider uppercase text-ink mb-2"
-          >
+          <label htmlFor="contact-subject" className={labelClass}>
             Subject <span className="text-brand">*</span>
           </label>
+
           <input
             id="contact-subject"
             name="subject"
@@ -136,28 +239,30 @@ export default function ContactForm() {
             onChange={onChange}
             required
             disabled={sending}
-            placeholder="Collaboration or Inquiry"
+            placeholder="Collaboration or inquiry"
             aria-invalid={Boolean(errors.subject)}
-            aria-describedby={errors.subject ? "contact-subject-error" : undefined}
-            className={`w-full px-4 py-3 text-sm rounded-sm bg-surface-alt border text-ink placeholder:text-ink-muted/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-colors duration-200 ${
-              errors.subject ? "border-red-500 bg-red-50/20" : "border-line"
+            aria-describedby={
+              errors.subject ? "contact-subject-error" : undefined
+            }
+            className={`${inputBase} ${
+              errors.subject
+                ? "border-red-500 bg-red-50/30"
+                : "border-line"
             }`}
           />
-          {errors.subject && (
-            <p id="contact-subject-error" className="mt-1.5 text-xs text-red-600 font-medium" role="alert">
-              {errors.subject}
-            </p>
-          )}
+
+          <FieldError
+            id="contact-subject-error"
+            message={errors.subject}
+          />
         </div>
 
         {/* Message */}
         <div>
-          <label
-            htmlFor="contact-message"
-            className="block text-xs font-semibold tracking-wider uppercase text-ink mb-2"
-          >
-            Message <span className="text-brand">*</span>
+          <label htmlFor="contact-message" className={labelClass}>
+            Your Message <span className="text-brand">*</span>
           </label>
+
           <textarea
             id="contact-message"
             name="message"
@@ -166,22 +271,29 @@ export default function ContactForm() {
             onChange={onChange}
             required
             disabled={sending}
-            placeholder="Write your message here..."
+            placeholder="Tell me a little about your inquiry..."
             aria-invalid={Boolean(errors.message)}
-            aria-describedby={errors.message ? "contact-message-error" : undefined}
-            className={`w-full px-4 py-3 text-sm rounded-sm bg-surface-alt border text-ink placeholder:text-ink-muted/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand transition-colors duration-200 resize-y ${
-              errors.message ? "border-red-500 bg-red-50/20" : "border-line"
+            aria-describedby={
+              errors.message ? "contact-message-error" : undefined
+            }
+            className={`${inputBase} min-h-36 resize-y leading-7 ${
+              errors.message
+                ? "border-red-500 bg-red-50/30"
+                : "border-line"
             }`}
           />
-          {errors.message && (
-            <p id="contact-message-error" className="mt-1.5 text-xs text-red-600 font-medium" role="alert">
-              {errors.message}
-            </p>
-          )}
+
+          <FieldError
+            id="contact-message-error"
+            message={errors.message}
+          />
         </div>
 
-        {/* Honeypot field (hidden from screen and tab order) */}
-        <div className="hidden" aria-hidden="true">
+        {/* Honeypot field for spam protection */}
+        <div
+          className="hidden"
+          aria-hidden="true"
+        >
           <label htmlFor="contact-website">Website</label>
           <input
             id="contact-website"
@@ -194,43 +306,99 @@ export default function ContactForm() {
           />
         </div>
 
-        {/* Status Alerts */}
-        <div aria-live="polite">
+        {/* Success and Error Messages */}
+        <div aria-live="polite" aria-atomic="true">
           {status === "success" && (
-            <div className="p-4 rounded-sm bg-brand-light border border-brand/30 text-brand-dark text-sm flex items-start gap-3">
-              <svg className="w-5 h-5 shrink-0 text-brand mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            <div className="flex items-start gap-3 rounded-xl border border-brand/25 bg-brand-light p-4 text-sm leading-6 text-brand-dark">
+              <svg
+                className="mt-0.5 h-5 w-5 shrink-0 text-brand"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
               </svg>
-              <span>Thank you! Your message has been sent successfully. I will get back to you soon.</span>
+
+              <p>
+                Thank you! Your message has been sent successfully.
+                I'll get back to you soon.
+              </p>
             </div>
           )}
+
           {status === "error" && (
-            <div className="p-4 rounded-sm bg-red-50 border border-red-200 text-red-800 text-sm flex items-start gap-3">
-              <svg className="w-5 h-5 shrink-0 text-red-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <div className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm leading-6 text-red-800">
+              <svg
+                className="mt-0.5 h-5 w-5 shrink-0 text-red-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
-              <span>Something went wrong. Please check your connection or reach out directly via email.</span>
+
+              <p>
+                {serverMessage ||
+                  "Something went wrong. Please try again."}
+              </p>
             </div>
           )}
         </div>
 
-        <div>
+        {/* Submit Button */}
+        <div className="pt-2">
           <Button
             type="submit"
             disabled={sending}
             aria-busy={sending}
-            className="w-full sm:w-auto"
+            className="group w-full justify-center rounded-xl py-3.5 text-sm font-semibold shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md sm:w-auto sm:min-w-44"
           >
             {sending ? (
               <>
-                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                <svg
+                  className="-ml-1 mr-2 h-4 w-4 animate-spin text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  />
                 </svg>
                 <span>Sending...</span>
               </>
             ) : (
-              "Send Message"
+              <span className="inline-flex items-center gap-2">
+                Send Message
+                <span
+                  aria-hidden="true"
+                  className="transition-transform duration-200 group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </span>
             )}
           </Button>
         </div>

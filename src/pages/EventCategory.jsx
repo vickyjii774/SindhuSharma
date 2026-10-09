@@ -36,14 +36,8 @@ export default function EventCategory() {
       <section className="py-12 sm:py-16 bg-surface border-b border-line mb-12 sm:mb-16">
         <Container>
           <div className="max-w-4xl">
-            <Link
-              to="/events"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase text-brand hover:text-brand-dark mb-4 cursor-pointer transition-colors"
-            >
-              <span>← All Categories</span>
-            </Link>
+            
             <SectionHeading
-              eyebrow="Category"
               title={`${category.label} Events`}
               text={category.description}
               className="mb-0"
@@ -55,7 +49,7 @@ export default function EventCategory() {
       {/* Events Grid */}
       <Container>
         {events.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6">
             {events.map((event) => (
               <EventCard key={event.id} event={event} categorySlug={category.slug} />
             ))}

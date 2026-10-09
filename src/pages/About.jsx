@@ -142,34 +142,9 @@ export default function About() {
       {/* Milestones */}
       <MilestonesSection />
 
-      {/* Advocacy */}
-      <AdvocacySection />
+    
 
-      {/* Personal / Professional Philosophy */}
-      {philosophy && (
-        <section
-          className="py-20 sm:py-28 bg-surface-alt border-b border-line"
-          aria-labelledby="philosophy-h"
-        >
-          <Container className="text-center flex flex-col items-center">
-            <Reveal className="max-w-3xl">
-              <span className="font-sans text-xs sm:text-sm font-semibold tracking-widest uppercase text-brand mb-4 block">
-                Guiding Principle
-              </span>
-
-              <h2 id="philosophy-h" className="sr-only">
-                Philosophy
-              </h2>
-
-              <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl text-ink font-medium italic leading-relaxed">
-                “{philosophy}”
-              </blockquote>
-
-              <div className="w-12 h-0.5 bg-brand mx-auto mt-6" />
-            </Reveal>
-          </Container>
-        </section>
-      )}
+    
     </div>
   );
 }
