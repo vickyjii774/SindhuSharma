@@ -1,46 +1,63 @@
+
 import SafeImage from "./SafeImage";
 
-export default function MilestoneCard({ item }) {
+export default function MilestoneCard({ item, showYear = true }) {
   return (
-    <li className="relative pl-8 sm:pl-10 pb-10 sm:pb-12 last:pb-2 group">
+    <li className="group relative pb-10 pl-8 last:pb-2 sm:pb-12 sm:pl-10">
       {/* Timeline Line */}
       <span
-        className="absolute left-[11px] top-3 bottom-0 w-[2px] bg-brand/25 group-last:hidden"
+        className="absolute bottom-0 left-[11px] top-3 w-[2px] bg-brand/25 group-last:hidden"
         aria-hidden="true"
       />
 
       {/* Timeline Dot */}
       <span
-        className="absolute left-0 top-1.5 w-6 h-6 rounded-full border-2 border-brand bg-white flex items-center justify-center shadow-xs transition-transform duration-200 group-hover:scale-110"
+        className="absolute left-0 top-1.5 flex h-6 w-6 items-center justify-center rounded-full border-2 border-brand bg-white shadow-sm transition-transform duration-200 group-hover:scale-110"
         aria-hidden="true"
       >
-        <span className="w-2 h-2 rounded-full bg-brand" />
+        <span className="h-2 w-2 rounded-full bg-brand" />
       </span>
 
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-        <div className="max-w-2xl">
-          <div className="font-serif text-2xl sm:text-3xl font-bold text-brand leading-none mb-2">
+      {/* Title and Year — Full Width */}
+      <div className="min-w-0">
+        {showYear && item?.year && (
+          <div className="mb-2 font-serif text-xl font-bold leading-tight text-brand sm:text-3xl">
             {item.year}
           </div>
-          <h3 className="font-serif text-xl sm:text-2xl font-bold text-ink">
-            {item.title}
-          </h3>
-          <p className="mt-2 text-sm sm:text-base text-ink-secondary leading-relaxed">
-            {item.description}
-          </p>
-        </div>
+        )}
 
-        {item.image && (
-          <div className="w-full sm:w-64 shrink-0 rounded-sm overflow-hidden border border-line">
-            <SafeImage
-              src={item.image}
-              alt={item.title}
-              ratio="ratio-4-3"
-              zoom
-            />
-          </div>
+        <h3 className="break-words font-serif text-base font-bold leading-snug text-ink sm:text-2xl">
+          {item?.title}
+        </h3>
+
+        {item?.location && (
+          <p className="mt-1 break-words text-xs leading-5 text-ink-secondary sm:text-base">
+            {item.location}
+          </p>
         )}
       </div>
+
+      {/* Description on the Left, Image on the Right */}
+      {(item?.description || item?.image) && (
+        <div className="mt-3 flex items-start gap-3 sm:mt-4 sm:gap-5">
+          {item?.description && (
+            <p className="min-w-0 flex-1 break-words text-xs leading-relaxed text-ink-secondary sm:text-base sm:leading-relaxed">
+              {item.description}
+            </p>
+          )}
+
+          {item?.image && (
+            <div className="w-28 shrink-0 overflow-hidden rounded-xl border border-line transition-all duration-300 hover:scale-105 hover:border-brand sm:w-64">
+              <SafeImage
+                src={item.image}
+                alt={item?.title || "Milestone"}
+                ratio="ratio-4-3"
+                zoom
+              />
+            </div>
+          )}
+        </div>
+      )}
     </li>
   );
 }

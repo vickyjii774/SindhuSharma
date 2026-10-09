@@ -46,10 +46,6 @@ export default function About() {
 
       {/* Left: Biography introduction */}
       <div className="col-span-7 flex min-w-0 flex-col items-start">
-        <span className="mb-3 font-sans text-[10px] font-semibold uppercase tracking-widest text-brand sm:text-sm">
-          Biography
-        </span>
-
         <h1
           id="about-heading"
           className="mb-2 font-serif text-2xl font-bold leading-tight tracking-tight text-ink sm:text-4xl lg:text-6xl"
@@ -71,7 +67,7 @@ export default function About() {
 
       {/* Right: Profile image */}
       <div className="col-span-5 min-w-0">
-        <div className="relative mx-auto w-full max-w-md rounded-sm border border-line bg-white p-1.5 shadow-sm sm:p-3">
+  <div className="relative w-full max-w-[140px] sm:max-w-[320px] aspect-[6/7] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-zinc-200 bg-zinc-100 group">
           <SafeImage
             src={profileImage}
             alt={`Portrait of ${name}`}
@@ -96,21 +92,24 @@ export default function About() {
     )}
 
     {/* Buttons: Below the entire biography */}
-    <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">
-      <Button to="/contact">
-        Get in Touch
-      </Button>
+ 
+<div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">
+  <Button to="/contact">
+    Get in Touch
+  </Button>
 
-      <Button to="/experience" variant="outline">
-        View Experience
-      </Button>
-    </div>
+  <Button to="/experience" variant="outline">
+    View Experience
+  </Button>
+</div>
+
   </Container>
 </section>
 
 
       {/* Education */}
       <EducationSection />
+
 
       {/* Skills */}
       <SkillsSection />
@@ -124,7 +123,7 @@ export default function About() {
           <Container>
             <Reveal>
               <SectionHeading
-                eyebrow="Fields of Focus"
+                
                 title="Areas of Interest"
                 id="interests-h"
                 text="Domains of study, creative practice, and community development that drive my daily focus."

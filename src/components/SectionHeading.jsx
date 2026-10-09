@@ -1,3 +1,4 @@
+
 export default function SectionHeading({
   eyebrow,
   title,
@@ -8,27 +9,29 @@ export default function SectionHeading({
 }) {
   return (
     <div
-      className={`mb-10 sm:mb-14 lg:mb-16 max-w-3xl ${
+      className={`mb-8 sm:mb-14 lg:mb-16 w-full max-w-3xl ${
         center ? "mx-auto text-center items-center flex flex-col" : ""
       } ${className}`}
     >
       {eyebrow && (
-        <span className="block font-sans text-xs sm:text-sm font-semibold tracking-widest uppercase text-brand mb-2 sm:mb-3">
+        <span className="mb-2 block font-sans text-[10px] font-semibold uppercase tracking-widest text-brand sm:mb-3 sm:text-sm">
           {eyebrow}
         </span>
       )}
+
       {title && (
         <h2
           id={id}
-          className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink leading-[1.15]"
+          className="font-serif text-3xl font-bold leading-[1.15] tracking-tight text-ink sm:text-4xl lg:text-5xl"
         >
           {title}
         </h2>
       )}
+
       {text && (
-        <p className="mt-3 sm:mt-4 text-base sm:text-lg text-ink-secondary leading-relaxed font-sans">
-          {text}
-        </p>
+  <p className="mt-3 w-full whitespace-nowrap text-[9px] leading-5 text-ink-secondary font-sans sm:mt-4 sm:whitespace-normal sm:text-lg sm:leading-relaxed">
+    {text}
+  </p>
       )}
     </div>
   );

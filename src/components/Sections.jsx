@@ -18,32 +18,38 @@ export function EducationSection() {
     <section className="py-16 sm:py-20 lg:py-24 bg-surface border-b border-line" aria-labelledby="education-h">
       <Container>
         <Reveal>
-          <SectionHeading eyebrow="Academic Foundation" title="Education" id="education-h" />
-          <div className="bg-white border border-line rounded-sm p-6 sm:p-10 divide-y divide-line">
-            {siteData.education.map((item) => (
-              <EducationCard key={item.id} item={item} />
-            ))}
-          </div>
+          <SectionHeading title="Education" id="education-h" />
+          
+<div className="space-y-4">
+  {siteData.education.map((item) => (
+    <EducationCard key={item.id} item={item} />
+  ))}
+</div>
+
         </Reveal>
       </Container>
     </section>
   );
 }
 
+
 export function SkillsSection() {
   if (!siteData.skills?.length) return null;
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-surface-alt border-b border-line" aria-labelledby="skills-h">
+    <section
+      className="border-b border-line bg-surface-alt py-12 sm:py-16 lg:py-24"
+      aria-labelledby="skills-h"
+    >
       <Container>
         <Reveal>
           <SectionHeading
-            eyebrow="Competencies & Expertise"
-            title="Key Skills"
-            id="skills-h"
-            text="Core competencies developed across architectural practice, youth advocacy, and community leadership."
-          />
-          <ul className="flex flex-wrap gap-2.5 sm:gap-3">
+  title="Key Skills"
+  id="skills-h"
+  text="Core competencies developed across architectural practice, youth advocacy, and community leadership."
+/>
+
+          <ul className="flex flex-wrap gap-2 sm:gap-3">
             {siteData.skills.map((s) => (
               <SkillCard key={s} skill={s} />
             ))}
@@ -54,11 +60,15 @@ export function SkillsSection() {
   );
 }
 
+
 export function MilestonesSection() {
   if (!siteData.milestones?.length) return null;
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-surface border-b border-line" aria-labelledby="milestones-h">
+    <section
+      className="border-b border-line bg-surface py-16 sm:py-20 lg:py-24"
+      aria-labelledby="milestones-h"
+    >
       <Container>
         <Reveal>
           <SectionHeading
@@ -67,11 +77,25 @@ export function MilestonesSection() {
             id="milestones-h"
             text="Defining steps in leadership, advocacy, and professional growth."
           />
-          <div className="max-w-4xl mx-auto pt-4">
-            <ol className="relative list-none p-0 m-0">
-              {siteData.milestones.map((m) => (
-                <MilestoneCard key={m.id} item={m} />
-              ))}
+
+          <div className="mx-auto max-w-4xl pt-4">
+            <ol className="relative m-0 list-none p-0">
+              {siteData.milestones.map((m, index) => {
+                const previous = siteData.milestones[index - 1];
+
+                const showYear =
+                  index === 0 ||
+                  String(previous?.year ?? "") !==
+                    String(m?.year ?? "");
+
+                return (
+                  <MilestoneCard
+                    key={m.id}
+                    item={m}
+                    showYear={showYear}
+                  />
+                );
+              })}
             </ol>
           </div>
         </Reveal>
@@ -79,6 +103,8 @@ export function MilestonesSection() {
     </section>
   );
 }
+
+
 
 export function AdvocacySection() {
   if (!siteData.advocacy?.length) return null;
