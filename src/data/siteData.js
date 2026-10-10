@@ -49,6 +49,7 @@ export const siteData = {
       linkedin: " https://www.linkedin.com/in/sindhu-sharma-190a7a36a?utm_source=share_via&utm_content=profile&utm_medium=member_android",
       instagram: "https://www.instagram.com/simranie_/",
       facebook: "https://www.facebook.com/Simran787",
+      tiktok: "https://www.tiktok.com/@simran78710"
       
     },
   },
