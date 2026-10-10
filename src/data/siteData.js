@@ -105,7 +105,7 @@ export const siteData = {
   milestones: [
     {
       id: "milestone-01",
-      year: "2021",
+      year: "2025",
       title: "NYCA Volunteer Recognition",
       location: "Kathmandu, Nepal",
       description: "Received recognition for outstanding volunteer contributions to the National Youth Council of Nepal (NYCA), demonstrating dedication and commitment to youth development initiatives.",
@@ -113,7 +113,7 @@ export const siteData = {
     },
     {
       id: "milestone-02",
-      year: "2022",
+      year: "2025",
       title: "NYCA Leadership Role",
       location: "Kathmandu, Nepal",
       description: "Assumed a leadership role within the National Youth Council of Nepal (NYCA), guiding and mentoring fellow volunteers in their community development initiatives.",
@@ -129,7 +129,7 @@ export const siteData = {
     },
     {
       id: "milestone-04",
-      year: "2025",
+      year: "2023",
       title: " World Youth Leadership Summit",
       location: "Singapore",
       description: "Participated in the World Youth Leadership Summit, representing Nepal and engaging with global youth leaders to exchange ideas and strategies for social impact.",
@@ -137,7 +137,7 @@ export const siteData = {
     },
      {
       id: "milestone-04",
-      year: "2025",
+      year: "2022",
       title: " youth Nepal summit",
       location: "kathmandu, Nepal",
       description: " Participated in the youth Nepal summit, representing Nepal and engaging with global youth leaders to exchange ideas and strategies for social impact.",
