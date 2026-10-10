@@ -15,7 +15,7 @@ export const siteData = {
   personal: {
     name: "Sindhu Sharma Kandel",
     title: "  Social Activist - Advocate",
-    motto: " ",
+    motto: "  ",
     profileImage: "/images/bik.JPG",
 
     heroIntro:
@@ -46,8 +46,8 @@ export const siteData = {
     location: "Kathmandu, Nepal",
 
     social: {
-      linkedin: " https://www.facebook.com/Simran787",
-      instagram: "https://www.facebook.com/Simran787",
+      linkedin: " https://www.linkedin.com/in/sindhu-sharma-190a7a36a?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      instagram: "https://www.instagram.com/simranie_/",
       facebook: "https://www.facebook.com/Simran787",
       
     },
