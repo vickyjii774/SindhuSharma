@@ -7,6 +7,9 @@ backend:
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
+media_library:
+  name: uploadcare
+
 collections:
   - name: portfolio
     label: Portfolio Content
@@ -14,6 +17,7 @@ collections:
       - name: site
         label: Website Content
         file: content/siteData.json
+        format: json
         fields:
           - label: Personal Information
             name: personal
@@ -25,8 +29,14 @@ collections:
               - { label: Profile Photo, name: profileImage, widget: image }
               - { label: Hero Introduction, name: heroIntro, widget: text }
               - { label: Short Biography, name: shortBio, widget: text }
-              - { label: Full Biography, name: fullBio, widget: list, field: { label: Paragraph, name: paragraph, widget: text } }
-              - { label: Interests, name: interests, widget: list, field: { label: Interest, name: interest, widget: string } }
+              - label: Full Biography
+                name: fullBio
+                widget: list
+                field: { label: Paragraph, name: paragraph, widget: text }
+              - label: Interests
+                name: interests
+                widget: list
+                field: { label: Interest, name: interest, widget: string }
               - { label: Philosophy, name: philosophy, widget: text }
               - { label: Email, name: email, widget: string }
               - { label: Phone, name: phone, widget: string }
@@ -56,8 +66,6 @@ collections:
             widget: list
             field: { label: Skill, name: skill, widget: string }
 
-
-            
           - label: Milestones
             name: milestones
             widget: list
@@ -67,9 +75,8 @@ collections:
               - { label: Title, name: title, widget: string }
               - { label: Location, name: location, widget: string }
               - { label: Description, name: description, widget: text }
-              - { label: Image, name: image, widget: image }
+              - { label: Image, name: image, widget: string, required: false }
 
-            
           - label: Advocacy
             name: advocacy
             widget: list
@@ -77,11 +84,7 @@ collections:
               - { label: ID, name: id, widget: string }
               - { label: Title, name: title, widget: string }
               - { label: Description, name: description, widget: text }
-              - { label: Image, name: image, widget: image }
-
-
-
-         
+              - { label: Image, name: image, widget: string, required: false }
 
           - label: Experience
             name: experiences
@@ -93,12 +96,24 @@ collections:
               - { label: Period, name: period, widget: string }
               - { label: Location, name: location, widget: string }
               - { label: Category, name: category, widget: string, required: false }
-              - { label: Image, name: image, widget: image, required: false }
+              - { label: Image, name: image, widget: string, required: false }
               - { label: Description, name: description, widget: text }
-              - { label: Responsibilities, name: responsibilities, widget: list, field: { label: Responsibility, name: responsibility, widget: string } }
-              - { label: Achievements, name: achievements, widget: list, field: { label: Achievement, name: achievement, widget: string } }
-              - { label: Skills, name: skills, widget: list, field: { label: Skill, name: skill, widget: string } }
-              - { label: Gallery, name: gallery, widget: list, field: { label: Photo, name: photo, widget: image } }
+              - label: Responsibilities
+                name: responsibilities
+                widget: list
+                field: { label: Responsibility, name: responsibility, widget: string }
+              - label: Achievements
+                name: achievements
+                widget: list
+                field: { label: Achievement, name: achievement, widget: string }
+              - label: Skills
+                name: skills
+                widget: list
+                field: { label: Skill, name: skill, widget: string }
+              - label: Gallery
+                name: gallery
+                widget: list
+                field: { label: Photo Path, name: photo, widget: string }
 
           - label: Event Categories
             name: eventCategories
@@ -108,7 +123,7 @@ collections:
               - { label: Data Key, name: key, widget: string }
               - { label: Label, name: label, widget: string }
               - { label: Description, name: description, widget: text }
-              - { label: Category Image, name: image, widget: image }
+              - { label: Category Image, name: image, widget: string, required: false }
 
           - label: Events
             name: events
@@ -122,12 +137,15 @@ collections:
                   - { label: Title, name: title, widget: string }
                   - { label: Date, name: date, widget: string }
                   - { label: Location, name: location, widget: string }
-                  - { label: Main Photo, name: image, widget: image }
+                  - { label: Main Photo Path, name: image, widget: string }
                   - { label: Description, name: description, widget: text }
                   - { label: Role, name: role, widget: text }
                   - { label: Contribution, name: contribution, widget: text }
                   - { label: Impact, name: impact, widget: text }
-                  - { label: Gallery, name: gallery, widget: list, field: { label: Photo, name: photo, widget: image } }
+                  - label: Gallery
+                    name: gallery
+                    widget: list
+                    field: { label: Photo Path, name: photo, widget: string }
 
               - label: National Events
                 name: national
