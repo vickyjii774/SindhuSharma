@@ -1,0 +1,22 @@
+backend:
+  name: turbo-github
+  turbo_site_id: 6a221ba1-151d-443a-a02a-a5cddf69b5d2
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: portfolio
+    label: Portfolio Content
+    files:
+      - name: site
+        label: Website Content
+        file: content/siteData.json
+        format: json
+        fields:
+          - label: Personal Information
+            name: personal
+            widget: object
+            fields:
+              - { label: Name, name: name, widget: string }
