@@ -119,13 +119,36 @@ export default function ContactForm() {
         website: values.website,
       };
 
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      
+const response = await fetch(
+  "https://formsubmit.co/ajax/sindhusharma398@gmail.com",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      name: payload.name,
+      email: payload.email,
+      subject: payload.subject,
+      message: payload.message,
+      _subject: `New Portfolio Message: ${payload.subject}`,
+      _template: "table",
+      _honey: payload.website,
+    }),
+  }
+);
+
+const data = await response.json();
+
+if (!response.ok || data.success !== "true") {
+  throw new Error(
+    data.message || "Unable to send your message. Please try again."
+  );
+}
+
+
 
       if (!response.ok) {
         let message = "Unable to send your message. Please try again.";
