@@ -1,7 +1,145 @@
+
 backend:
   name: turbo-github
   turbo_site_id: 6a221ba1-151d-443a-a02a-a5cddf69b5d2
   branch: main
 
-media_folder: "public/images"
-public_folder: "/images"
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: portfolio
+    label: Portfolio Content
+    files:
+      - name: site
+        label: Website Content
+        file: content/siteData.json
+        fields:
+          - label: Personal Information
+            name: personal
+            widget: object
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Motto, name: motto, widget: string, required: false }
+              - { label: Profile Photo, name: profileImage, widget: image }
+              - { label: Hero Introduction, name: heroIntro, widget: text }
+              - { label: Short Biography, name: shortBio, widget: text }
+              - { label: Full Biography, name: fullBio, widget: list, field: { label: Paragraph, name: paragraph, widget: text } }
+              - { label: Interests, name: interests, widget: list, field: { label: Interest, name: interest, widget: string } }
+              - { label: Philosophy, name: philosophy, widget: text }
+              - { label: Email, name: email, widget: string }
+              - { label: Phone, name: phone, widget: string }
+              - { label: Location, name: location, widget: string }
+              - label: Social Links
+                name: social
+                widget: object
+                fields:
+                  - { label: LinkedIn, name: linkedin, widget: string, required: false }
+                  - { label: Instagram, name: instagram, widget: string, required: false }
+                  - { label: Facebook, name: facebook, widget: string, required: false }
+                  - { label: TikTok, name: tiktok, widget: string, required: false }
+
+          - label: Education
+            name: education
+            widget: list
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Qualification, name: qualification, widget: string }
+              - { label: Institution, name: institution, widget: string }
+              - { label: Location, name: location, widget: string }
+              - { label: Period, name: period, widget: string }
+              - { label: Description, name: description, widget: text }
+
+          - label: Skills
+            name: skills
+            widget: list
+            field: { label: Skill, name: skill, widget: string }
+
+
+            
+          - label: Milestones
+            name: milestones
+            widget: list
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Year, name: year, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Location, name: location, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: Image, name: image, widget: image }
+
+            
+          - label: Advocacy
+            name: advocacy
+            widget: list
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: Image, name: image, widget: image }
+
+
+
+         
+
+          - label: Experience
+            name: experiences
+            widget: list
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Organization, name: organization, widget: string }
+              - { label: Role, name: role, widget: string, required: false }
+              - { label: Period, name: period, widget: string }
+              - { label: Location, name: location, widget: string }
+              - { label: Category, name: category, widget: string, required: false }
+              - { label: Image, name: image, widget: image, required: false }
+              - { label: Description, name: description, widget: text }
+              - { label: Responsibilities, name: responsibilities, widget: list, field: { label: Responsibility, name: responsibility, widget: string } }
+              - { label: Achievements, name: achievements, widget: list, field: { label: Achievement, name: achievement, widget: string } }
+              - { label: Skills, name: skills, widget: list, field: { label: Skill, name: skill, widget: string } }
+              - { label: Gallery, name: gallery, widget: list, field: { label: Photo, name: photo, widget: image } }
+
+          - label: Event Categories
+            name: eventCategories
+            widget: list
+            fields:
+              - { label: URL Slug, name: slug, widget: string }
+              - { label: Data Key, name: key, widget: string }
+              - { label: Label, name: label, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: Category Image, name: image, widget: image }
+
+          - label: Events
+            name: events
+            widget: object
+            fields:
+              - label: International Events
+                name: international
+                widget: list
+                fields: &event_fields
+                  - { label: ID, name: id, widget: string }
+                  - { label: Title, name: title, widget: string }
+                  - { label: Date, name: date, widget: string }
+                  - { label: Location, name: location, widget: string }
+                  - { label: Main Photo, name: image, widget: image }
+                  - { label: Description, name: description, widget: text }
+                  - { label: Role, name: role, widget: text }
+                  - { label: Contribution, name: contribution, widget: text }
+                  - { label: Impact, name: impact, widget: text }
+                  - { label: Gallery, name: gallery, widget: list, field: { label: Photo, name: photo, widget: image } }
+
+              - label: National Events
+                name: national
+                widget: list
+                fields: *event_fields
+
+              - label: School & Community Events
+                name: schoolCommunity
+                widget: list
+                fields: *event_fields
+
+              - label: Grassroots & Local Events
+                name: grassrootLocal
+                widget: list
+                fields: *event_fields
