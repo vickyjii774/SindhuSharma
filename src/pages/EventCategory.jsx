@@ -31,10 +31,10 @@ export default function EventCategory() {
   }
 
   return (
-    <div className="pt-24 sm:pt-28 lg:pt-32 pb-20 sm:pb-28">
+    <div className="pt-10 sm:pt-14 lg:pt-16 pb-12 sm:pb-16">
       {/* Category Header */}
-      <section className="py-12 sm:py-16 bg-surface border-b border-line mb-12 sm:mb-16">
-        <Container>
+<section className="py-5 sm:py-7 bg-surface border-b border-line mb-5 sm:mb-6">
+          <Container>
           <div className="max-w-4xl">
             
             <SectionHeading
@@ -49,7 +49,7 @@ export default function EventCategory() {
       {/* Events Grid */}
       <Container>
         {events.length > 0 ? (
-          <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 lg:gap-5">
             {events.map((event) => (
               <EventCard key={event.id} event={event} categorySlug={category.slug} />
             ))}
@@ -65,7 +65,7 @@ export default function EventCategory() {
           </div>
         )}
 
-        <div className="mt-16 pt-8 border-t border-line flex items-center justify-between">
+        <div className="mt-8 pt-5 sm:mt-10 sm:pt-6 border-t border-line flex items-center justify-between gap-3">
           <Button to="/events" variant="outline">
             ← Back to Events Overview
           </Button>

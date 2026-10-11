@@ -29,7 +29,7 @@ export default function About() {
   });
 
   return (
-    <div className="pt-24 sm:pt-28 lg:pt-32">
+    <div className="pt-10 sm:pt-14 lg:pt-16">
       {/* Editorial Hero / Biography */}
 
 
@@ -37,7 +37,7 @@ export default function About() {
 
 {/* Editorial Hero / Biography */}
 <section
-  className="bg-surface border-b border-line py-10 sm:py-16 lg:py-20"
+  className="bg-surface border-b border-line py-5 sm:py-8 lg:py-10"
   aria-labelledby="about-heading"
 >
   <Container>
@@ -82,7 +82,7 @@ export default function About() {
 
     {/* Remaining biography: Full width below the image */}
     {fullBio?.length > 1 && (
-      <div className="mt-8 space-y-5 font-sans text-sm leading-7 text-ink-secondary sm:mt-12 sm:space-y-6 sm:text-base sm:leading-8 lg:mt-16 lg:text-lg">
+      <div className="mt-5 space-y-4 font-sans text-sm leading-6 text-ink-secondary sm:mt-7 sm:space-y-5 sm:text-base sm:leading-7 lg:mt-9 lg:text-lg">
         {fullBio.slice(1).map((paragraph, index) => (
           <p key={index}>
             {paragraph}
@@ -93,7 +93,7 @@ export default function About() {
 
     {/* Buttons: Below the entire biography */}
  
-<div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">
+<div className="mt-5 flex flex-wrap items-center gap-3 sm:mt-7 sm:gap-4">
   <Button to="/contact">
     Get in Touch
   </Button>
@@ -117,7 +117,7 @@ export default function About() {
       {/* Areas of Interest */}
       {interests && interests.length > 0 && (
         <section
-          className="py-16 sm:py-20 lg:py-24 bg-white border-b border-line"
+          className="py-8 sm:py-10 lg:py-12 bg-white border-b border-line"
           aria-labelledby="interests-h"
         >
           <Container>

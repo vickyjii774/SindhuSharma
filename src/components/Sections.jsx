@@ -15,7 +15,7 @@ export function EducationSection() {
   if (!siteData.education?.length) return null;
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-surface border-b border-line" aria-labelledby="education-h">
+    <section className="pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-10 lg:pb-12 bg-surface border-b border-line" aria-labelledby="education-h">
       <Container>
         <Reveal>
           <SectionHeading title="Education" id="education-h" />
@@ -38,7 +38,7 @@ export function SkillsSection() {
 
   return (
     <section
-      className="border-b border-line bg-surface-alt py-12 sm:py-16 lg:py-24"
+      className="border-b border-line bg-surface-alt pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-10 lg:pb-12"
       aria-labelledby="skills-h"
     >
       <Container>

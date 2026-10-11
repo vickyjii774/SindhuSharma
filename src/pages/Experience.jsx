@@ -12,9 +12,9 @@ export default function Experience() {
   });
 
   return (
-    <div className="pt-24 sm:pt-28 lg:pt-32 pb-20 sm:pb-28">
+    <div className="pt-10 sm:pt-14 lg:pt-16 pb-12 sm:pb-16">
       {/* Page Header */}
-      <section className="py-12 sm:py-16 bg-surface border-b border-line mb-12 sm:mb-16">
+      <section className="py-5 sm:py-7 bg-surface border-b border-line mb-5 sm:mb-6">
         <Container>
           <SectionHeading
             title="Experience & Leadership"
@@ -27,7 +27,7 @@ export default function Experience() {
       {/* Experience Timeline / Cards */}
       <Container>
         <Reveal>
-          <div className="space-y-6 sm:space-y-8 ">
+          <div className="space-y-4 sm:space-y-5">
             {siteData.experiences.map((exp) => (
               <ExperienceCard key={exp.id} experience={exp} />
             ))}

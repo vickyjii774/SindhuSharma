@@ -29,9 +29,9 @@ export default function Events() {
   ].filter(Boolean);
 
   return (
-    <div className="pb-20 pt-24 sm:pb-28 sm:pt-28 lg:pt-32">
+    <div className="pb-12 pt-10 sm:pb-16 sm:pt-14 lg:pt-16">
       {/* Page Header */}
-      <section className="mb-10 border-b border-line bg-surface py-10 sm:mb-12 sm:py-14">
+      <section className="mb-5 border-b border-line bg-surface py-5 sm:mb-6 sm:py-7">
         <Container>
           <SectionHeading
            
@@ -45,7 +45,7 @@ export default function Events() {
       {/* Events Grid */}
       <Container>
         <Reveal>
-          <section className="mx-auto max-w-full px-0 pt-2 sm:px-2 lg:px-0">
+          <section className="mx-auto max-w-full px-0 pt-0 sm:px-2 lg:px-0">
              <div className="grid grid-cols-2 items-stretch gap-3 sm:gap-5 lg:grid-cols-4 lg:gap-6">
                 {categories.map((category) => (
                 <div
