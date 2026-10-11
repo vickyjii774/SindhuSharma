@@ -1,16 +1,5 @@
 {
   "personal": {
-    "name": "Sindhu Sharma Kandel",
-    "title": "  Social Activist - Advocate",
-    "motto": "  ",
-    "profileImage": "/images/bik.JPG",
-    "heroIntro": "hello everyone, I am Sindhu Sharma, a passionate social activist and advocate dedicated to creating positive change in society. With a strong commitment to social justice and community empowerment, I strive to make a meaningful impact through my work and advocacy efforts.",
-    "shortBio": "Sindhu Sharma is a dedicated social activist and advocate, committed to driving positive change in society. With a focus on social justice and community empowerment, Sindhu works tirelessly to raise awareness, promote equality, and create opportunities for marginalized communities. Through advocacy, education, and grassroots initiatives, Sindhu aims to inspire others to join the movement for a more inclusive and equitable world.",
-    "fullBio": [
-      " Sindhu Sharma is a dedicated social activist and advocate, committed to driving positive change in society. With a focus on social justice and community empowerment, Sindhu works tirelessly to raise awareness, promote equality, and create opportunities for marginalized communities. Through advocacy, education, and grassroots initiatives, Sindhu aims to inspire others to join the movement for a more inclusive and equitable world.",
-      " Sindhu's journey as a social activist began with a deep-rooted passion for addressing societal issues and advocating for the rights of the underprivileged. Through her involvement in various community projects, she has gained valuable experience in mobilizing resources, organizing campaigns, and fostering collaboration among diverse stakeholders.",
-      " Sindhu aims to continue her work in promoting social justice and community empowerment, with a focus on creating sustainable change and inspiring others to join the movement for a more inclusive and equitable world."
-    ],
     "interests": [
       "Singing",
       " Traveling",
@@ -21,16 +10,27 @@
       "Social Justice Initiatives",
       "Public Speaking and Awareness Campaigns"
     ],
-    "philosophy": " I believe in the power of collective action and the importance of amplifying marginalized voices. By fostering empathy, understanding, and collaboration, we can create a society that values diversity, equality, and justice for all.",
-    "email": "sindhusharma398@gmail.com",
-    "phone": "9866014342",
-    "location": "Kathmandu, Nepal",
+    "name": "Sindhu Sharma Kandel",
+    "shortBio": "Sindhu Sharma is a dedicated social activist and advocate, committed to driving positive change in society. With a focus on social justice and community empowerment, Sindhu works tirelessly to raise awareness, promote equality, and create opportunities for marginalized communities. Through advocacy, education, and grassroots initiatives, Sindhu aims to inspire others to join the movement for a more inclusive and equitable world.",
+    "motto": "  lets build and grow together",
     "social": {
       "linkedin": " https://www.linkedin.com/in/sindhu-sharma-190a7a36a?utm_source=share_via&utm_content=profile&utm_medium=member_android",
       "instagram": "https://www.instagram.com/simranie_/",
       "facebook": "https://www.facebook.com/Simran787",
       "tiktok": "https://www.tiktok.com/@simran78710"
-    }
+    },
+    "phone": "9866014342",
+    "philosophy": " I believe in the power of collective action and the importance of amplifying marginalized voices. By fostering empathy, understanding, and collaboration, we can create a society that values diversity, equality, and justice for all.",
+    "profileImage": "/images/uploads/39217.jpg",
+    "heroIntro": "hello everyone, I am Sindhu Sharma, a passionate social activist and advocate dedicated to creating positive change in society. With a strong commitment to social justice and community empowerment, I strive to make a meaningful impact through my work and advocacy efforts.",
+    "location": "Kathmandu, Nepal",
+    "title": "  Social Activist - Advocate - Entrepreneur",
+    "fullBio": [
+      " Sindhu Sharma is a dedicated social activist and advocate, committed to driving positive change in society. With a focus on social justice and community empowerment, Sindhu works tirelessly to raise awareness, promote equality, and create opportunities for marginalized communities. Through advocacy, education, and grassroots initiatives, Sindhu aims to inspire others to join the movement for a more inclusive and equitable world.",
+      " Sindhu's journey as a social activist began with a deep-rooted passion for addressing societal issues and advocating for the rights of the underprivileged. Through her involvement in various community projects, she has gained valuable experience in mobilizing resources, organizing campaigns, and fostering collaboration among diverse stakeholders.",
+      " Sindhu aims to continue her work in promoting social justice and community empowerment, with a focus on creating sustainable change and inspiring others to join the movement for a more inclusive and equitable world."
+    ],
+    "email": "sindhusharma398@gmail.com"
   },
   "education": [
     {
@@ -127,22 +127,7 @@
   ],
   "experiences": [
     {
-      "id": "nyca-volunteer",
-      "organization": "NYCA (National Youth Climate Activists)",
-      "role": "Volunteer",
       "period": "2025 January — 2025 July",
-      "location": "Kathmandu, Nepal",
-      "image": " /images/bik.JPG",
-      "description": "Participated in community outreach programs, organized awareness campaigns, and collaborated with local organizations to address social and environmental issues.",
-      "responsibilities": [
-        "Organized and led community workshops on climate change and sustainability.",
-        "Collaborated with local NGOs to implement youth-led initiatives for social impact.",
-        "Conducted research and presented findings on environmental conservation and youth engagement."
-      ],
-      "achievements": [
-        "Successfully mobilized a team of volunteers to implement a community clean-up project, resulting in improved local environmental conditions.",
-        "Received recognition from NYCA for outstanding contributions to youth advocacy and community development."
-      ],
       "skills": [
         "leadership",
         "communication",
@@ -154,31 +139,30 @@
         "project coordination",
         "strategic planning"
       ],
+      "achievements": [
+        "Successfully mobilized a team of volunteers to implement a community clean-up project, resulting in improved local environmental conditions.",
+        "Received recognition from NYCA for outstanding contributions to youth advocacy and community development."
+      ],
+      "responsibilities": [
+        "Organized and led community workshops on climate change and sustainability.",
+        "Collaborated with local NGOs to implement youth-led initiatives for social impact.",
+        "Conducted research and presented findings on environmental conservation and youth engagement."
+      ],
       "gallery": [
         "/images/bik.JPG",
         "/images/bik.JPG",
         "/images/bik.JPG",
         "/images/bik.JPG"
-      ]
+      ],
+      "organization": "NYCA (National Youth Climate Activists)",
+      "location": "Kathmandu, Nepal",
+      "role": "Volunteer",
+      "id": "nyca-volunteer",
+      "image": " /images/bik.JPG",
+      "description": "Participated in community outreach programs, organized awareness campaigns, and collaborated with local organizations to address social and environmental issues."
     },
     {
-      "id": "freelance projects",
-      "organization": "Freelance  Projects",
-      "role": "",
       "period": "2023-06 — 2024-12",
-      "location": "Remote / Kathmandu",
-      "category": "Freelance Work",
-      "image": " /images/bik.JPG",
-      "description": "Completed various freelance projects, including web development, graphic design, and content creation for clients across different industries.  ",
-      "responsibilities": [
-        "Developed and delivered high-quality digital solutions tailored to client needs.",
-        "Collaborated with clients to understand project requirements and provide innovative solutions.",
-        "Managed project timelines, budgets, and deliverables to ensure successful project completion."
-      ],
-      "achievements": [
-        "Successfully completed 12+ client projects with positive feedback.",
-        "Built custom lightweight admin CMS tools for non-technical site owners."
-      ],
       "skills": [
         "React",
         "Tailwind CSS",
@@ -186,31 +170,31 @@
         "AutoCAD",
         "Figma"
       ],
+      "achievements": [
+        "Successfully completed 12+ client projects with positive feedback.",
+        "Built custom lightweight admin CMS tools for non-technical site owners."
+      ],
+      "responsibilities": [
+        "Developed and delivered high-quality digital solutions tailored to client needs.",
+        "Collaborated with clients to understand project requirements and provide innovative solutions.",
+        "Managed project timelines, budgets, and deliverables to ensure successful project completion."
+      ],
       "gallery": [
         "/images/bik.JPG",
         "/images/bik.JPG",
         "/images/bik.JPG",
         "/images/bik.JPG"
-      ]
+      ],
+      "organization": "Freelance  Projects",
+      "location": "Remote / Kathmandu",
+      "role": "",
+      "id": "freelance projects",
+      "image": " /images/bik.JPG",
+      "description": "Completed various freelance projects, including web development, graphic design, and content creation for clients across different industries.  ",
+      "category": "Freelance Work"
     },
     {
-      "id": "volunteerism",
-      "organization": "NYCA (National Youth Climate Activists)",
-      "role": " Volunteer",
       "period": "2024 — Present",
-      "location": "Kathmandu, Nepal",
-      "category": "Volunteerism",
-      "image": "  /images/bik.JPG",
-      "description": "  Participated in community outreach programs, organized awareness campaigns, and collaborated with local organizations to address social and environmental issues.",
-      "responsibilities": [
-        "Organized and led community workshops on climate change and sustainability.",
-        "Collaborated with local NGOs to implement youth-led initiatives for social impact.",
-        "Conducted research and presented findings on environmental conservation and youth engagement."
-      ],
-      "achievements": [
-        "Successfully mobilized a team of volunteers to implement a community clean-up project, resulting in improved local environmental conditions.",
-        "Received recognition from NYCA for outstanding contributions to youth advocacy and community development."
-      ],
       "skills": [
         "leadership",
         "communication",
@@ -222,39 +206,55 @@
         "project coordination",
         "strategic planning"
       ],
+      "achievements": [
+        "Successfully mobilized a team of volunteers to implement a community clean-up project, resulting in improved local environmental conditions.",
+        "Received recognition from NYCA for outstanding contributions to youth advocacy and community development."
+      ],
+      "responsibilities": [
+        "Organized and led community workshops on climate change and sustainability.",
+        "Collaborated with local NGOs to implement youth-led initiatives for social impact.",
+        "Conducted research and presented findings on environmental conservation and youth engagement."
+      ],
       "gallery": [
         "/images/bik.JPG",
         "/images/bik.JPG",
         "/images/bik.JPG",
         "/images/bik.JPG"
-      ]
+      ],
+      "organization": "NYCA (National Youth Climate Activists)",
+      "location": "Kathmandu, Nepal",
+      "role": " Volunteer",
+      "id": "volunteerism",
+      "image": "  /images/bik.JPG",
+      "description": "  Participated in community outreach programs, organized awareness campaigns, and collaborated with local organizations to address social and environmental issues.",
+      "category": "Volunteerism"
     },
     {
-      "id": "nyca",
-      "organization": "NYCA",
-      "role": " Coordinator",
       "period": " 2026 July onwards",
-      "location": " Kathmandu, Nepal",
-      "category": "Leadership",
-      "image": " /images/bik.JPG",
-      "description": "Coordinated and managed youth-led initiatives, fostering collaboration among volunteers and stakeholders to drive impactful community projects.",
-      "responsibilities": [
-        " Coordinated and managed youth-led initiatives, fostering collaboration among volunteers and stakeholders to drive impactful community projects."
+      "skills": [
+        "Leadership",
+        "Advocacy"
       ],
       "achievements": [
         "Successfully organized and executed a youth-led environmental awareness campaign, reaching over 500 community members.",
         "Received recognition from NYCA for exceptional leadership and coordination skills."
       ],
-      "skills": [
-        "Leadership",
-        "Advocacy"
+      "responsibilities": [
+        " Coordinated and managed youth-led initiatives, fostering collaboration among volunteers and stakeholders to drive impactful community projects."
       ],
       "gallery": [
         "/images/bik.JPG",
         "/images/bik.JPG",
         "/images/bik.JPG",
         "/images/bik.JPG"
-      ]
+      ],
+      "organization": "NYCA",
+      "location": " Kathmandu, Nepal",
+      "role": " Coordinator",
+      "id": "nyca",
+      "image": " /images/bik.JPG",
+      "description": "Coordinated and managed youth-led initiatives, fostering collaboration among volunteers and stakeholders to drive impactful community projects.",
+      "category": "Leadership"
     }
   ],
   "eventCategories": [
@@ -290,164 +290,164 @@
   "events": {
     "international": [
       {
-        "id": "international-event-01",
-        "title": " She Connects Youth Advocacy Award",
-        "date": " July 2025 ",
-        "location": "Thailand",
-        "image": "  /images/bik.JPG",
-        "description": " sindhu Sharma received the She Connects Youth Advocacy Award for outstanding contributions to youth empowerment and advocacy efforts, recognizing dedication to creating positive change in society.",
-        "role": " role",
-        "contribution": "  In this event, Sindhu actively participated in discussions, workshops, and networking sessions focused on youth advocacy and empowerment. She shared her experiences and insights on effective strategies for driving social change and inspiring youth engagement.",
         "impact": "  Sindhu's involvement in the She Connects Youth Advocacy Award event contributed to raising awareness about youth empowerment and advocacy initiatives. Her participation helped foster collaboration among youth leaders, organizations, and stakeholders, leading to increased support for youth-led projects and initiatives.  ",
+        "date": " July 2025 ",
+        "contribution": "  In this event, Sindhu actively participated in discussions, workshops, and networking sessions focused on youth advocacy and empowerment. She shared her experiences and insights on effective strategies for driving social change and inspiring youth engagement.",
         "gallery": [
           "/images/bik.JPG",
           "/images/bik.JPG",
           "/images/bik.JPG",
           "/images/bik.JPG"
-        ]
+        ],
+        "location": "Thailand",
+        "role": " role",
+        "title": " She Connects Youth Advocacy Award",
+        "id": "international-event-01",
+        "image": "  /images/bik.JPG",
+        "description": " sindhu Sharma received the She Connects Youth Advocacy Award for outstanding contributions to youth empowerment and advocacy efforts, recognizing dedication to creating positive change in society."
       },
       {
-        "id": "international-event-02",
-        "title": " She Can  Advocacy Award",
-        "date": " July 2025 ",
-        "location": "Thailand",
-        "image": "  /images/bik.JPG",
-        "description": " sindhu Sharma received the She Connects Youth Advocacy Award for outstanding contributions to youth empowerment and advocacy efforts, recognizing dedication to creating positive change in society.",
-        "role": " role",
-        "contribution": "  In this event, Sindhu actively participated in discussions, workshops, and networking sessions focused on youth advocacy and empowerment. She shared her experiences and insights on effective strategies for driving social change and inspiring youth engagement.",
         "impact": "  Sindhu's involvement in the She Connects Youth Advocacy Award event contributed to raising awareness about youth empowerment and advocacy initiatives. Her participation helped foster collaboration among youth leaders, organizations, and stakeholders, leading to increased support for youth-led projects and initiatives.  ",
+        "date": " July 2025 ",
+        "contribution": "  In this event, Sindhu actively participated in discussions, workshops, and networking sessions focused on youth advocacy and empowerment. She shared her experiences and insights on effective strategies for driving social change and inspiring youth engagement.",
         "gallery": [
           "/images/bik.JPG",
           "/images/bik.JPG",
           "/images/bik.JPG",
           "/images/bik.JPG"
-        ]
+        ],
+        "location": "Thailand",
+        "role": " role",
+        "title": " She Can  Advocacy Award",
+        "id": "international-event-02",
+        "image": "  /images/bik.JPG",
+        "description": " sindhu Sharma received the She Connects Youth Advocacy Award for outstanding contributions to youth empowerment and advocacy efforts, recognizing dedication to creating positive change in society."
       }
     ],
     "national": [
       {
+        "impact": "The event provided an opportunity to build connections, exchange perspectives, and strengthen engagement with youth leadership and community initiatives.",
+        "date": "July 2022",
+        "contribution": "Contributed to the event through active participation, collaboration, and the exchange of ideas with other participants.",
+        "gallery": [
+          "/images/bik.JPG",
+          "/images/bik.JPG",
+          "/images/bik.JPG"
+        ],
+        "location": "Kathmandu, Nepal",
+        "role": "Participated in the event, engaging with fellow young people and contributing to discussions and activities focused on youth leadership and development.",
+        "title": "National NYCA",
         "id": "national-event-01",
-        "title": "National NYCA",
-        "date": "July 2022",
-        "location": "Kathmandu, Nepal",
         "image": "/images/bik.JPG",
-        "description": "Participated in National NYCA, a national-level event in Kathmandu, Nepal, focused on youth engagement, leadership, collaboration, and community development.",
-        "role": "Participated in the event, engaging with fellow young people and contributing to discussions and activities focused on youth leadership and development.",
-        "contribution": "Contributed to the event through active participation, collaboration, and the exchange of ideas with other participants.",
+        "description": "Participated in National NYCA, a national-level event in Kathmandu, Nepal, focused on youth engagement, leadership, collaboration, and community development."
+      },
+      {
         "impact": "The event provided an opportunity to build connections, exchange perspectives, and strengthen engagement with youth leadership and community initiatives.",
+        "date": "July 2024",
+        "contribution": "Contributed to the event through active participation, collaboration, and the exchange of ideas with other participants.",
         "gallery": [
           "/images/bik.JPG",
           "/images/bik.JPG",
           "/images/bik.JPG"
-        ]
-      },
-      {
+        ],
+        "location": "Kathmandu, Nepal",
+        "role": "Participated in the event, engaging with fellow young people and contributing to discussions and activities focused on youth leadership and development.",
+        "title": "Bayu Sambad",
         "id": "national-event-02",
-        "title": "Bayu Sambad",
-        "date": "July 2024",
-        "location": "Kathmandu, Nepal",
         "image": "/images/bik.JPG",
-        "description": "Participated in National NYCA, a national-level event in Kathmandu, Nepal, focused on youth engagement, leadership, collaboration, and community development.",
-        "role": "Participated in the event, engaging with fellow young people and contributing to discussions and activities focused on youth leadership and development.",
-        "contribution": "Contributed to the event through active participation, collaboration, and the exchange of ideas with other participants.",
-        "impact": "The event provided an opportunity to build connections, exchange perspectives, and strengthen engagement with youth leadership and community initiatives.",
-        "gallery": [
-          "/images/bik.JPG",
-          "/images/bik.JPG",
-          "/images/bik.JPG"
-        ]
+        "description": "Participated in National NYCA, a national-level event in Kathmandu, Nepal, focused on youth engagement, leadership, collaboration, and community development."
       },
       {
-        "id": "national-event-03",
-        "title": "National NYCA",
+        "impact": "The event provided an opportunity to build connections, exchange perspectives, and strengthen engagement with youth leadership and community initiatives.",
         "date": "July 2022",
-        "location": "Kathmandu, Nepal",
-        "image": "/images/bik.JPG",
-        "description": "Participated in National NYCA, a national-level event in Kathmandu, Nepal, focused on youth engagement, leadership, collaboration, and community development.",
-        "role": "Participated in the event, engaging with fellow young people and contributing to discussions and activities focused on youth leadership and development.",
         "contribution": "Contributed to the event through active participation, collaboration, and the exchange of ideas with other participants.",
-        "impact": "The event provided an opportunity to build connections, exchange perspectives, and strengthen engagement with youth leadership and community initiatives.",
         "gallery": [
           "/images/bik.JPG",
           "/images/bik.JPG",
           "/images/bik.JPG"
-        ]
+        ],
+        "location": "Kathmandu, Nepal",
+        "role": "Participated in the event, engaging with fellow young people and contributing to discussions and activities focused on youth leadership and development.",
+        "title": "National NYCA",
+        "id": "national-event-03",
+        "image": "/images/bik.JPG",
+        "description": "Participated in National NYCA, a national-level event in Kathmandu, Nepal, focused on youth engagement, leadership, collaboration, and community development."
       },
       {
-        "id": "national-event-04",
-        "title": "Bayu Sambad",
-        "date": "July 2024",
-        "location": "Kathmandu, Nepal",
-        "image": "/images/bik.JPG",
-        "description": "Participated in National NYCA, a national-level event in Kathmandu, Nepal, focused on youth engagement, leadership, collaboration, and community development.",
-        "role": "Participated in the event, engaging with fellow young people and contributing to discussions and activities focused on youth leadership and development.",
-        "contribution": "Contributed to the event through active participation, collaboration, and the exchange of ideas with other participants.",
         "impact": "The event provided an opportunity to build connections, exchange perspectives, and strengthen engagement with youth leadership and community initiatives.",
+        "date": "July 2024",
+        "contribution": "Contributed to the event through active participation, collaboration, and the exchange of ideas with other participants.",
         "gallery": [
           "/images/bik.JPG",
           "/images/bik.JPG",
           "/images/bik.JPG"
-        ]
+        ],
+        "location": "Kathmandu, Nepal",
+        "role": "Participated in the event, engaging with fellow young people and contributing to discussions and activities focused on youth leadership and development.",
+        "title": "Bayu Sambad",
+        "id": "national-event-04",
+        "image": "/images/bik.JPG",
+        "description": "Participated in National NYCA, a national-level event in Kathmandu, Nepal, focused on youth engagement, leadership, collaboration, and community development."
       }
     ],
     "schoolCommunity": [
       {
-        "id": "school-community-event-01",
-        "title": "School and Community Engagement",
-        "date": "July 2022",
-        "location": "Kathmandu, Nepal",
-        "image": "/images/bik.JPG",
-        "description": "An opportunity to engage with the school and local community through collaborative activities, youth participation, and initiatives that encourage learning, leadership, and social responsibility.",
-        "role": "Participated in community-focused activities, engaging with other participants and supporting initiatives that promote collaboration and community involvement.",
-        "contribution": "Contributed through active participation, teamwork, and sharing ideas to encourage positive engagement within the school and community.",
         "impact": "Supported community engagement and helped strengthen awareness of collaboration, social responsibility, and youth participation.",
+        "date": "July 2022",
+        "contribution": "Contributed through active participation, teamwork, and sharing ideas to encourage positive engagement within the school and community.",
         "gallery": [
           "/images/bik.JPG"
-        ]
+        ],
+        "location": "Kathmandu, Nepal",
+        "role": "Participated in community-focused activities, engaging with other participants and supporting initiatives that promote collaboration and community involvement.",
+        "title": "School and Community Engagement",
+        "id": "school-community-event-01",
+        "image": "/images/bik.JPG",
+        "description": "An opportunity to engage with the school and local community through collaborative activities, youth participation, and initiatives that encourage learning, leadership, and social responsibility."
       },
       {
-        "id": "school-community-event-02",
-        "title": "Youth Learning and Community Participation",
-        "date": "August 2022",
-        "location": "Kathmandu, Nepal",
-        "image": "/images/bik.JPG",
-        "description": "A school and community engagement initiative centred on youth participation, collaborative learning, and building stronger connections between young people and their communities.",
-        "role": "Took part in activities designed to encourage teamwork, learning, and active involvement in the community.",
-        "contribution": "Contributed ideas, collaborated with fellow participants, and supported activities promoting positive community engagement.",
         "impact": "Highlighted the importance of youth involvement, cooperation, and shared learning in creating a more connected community.",
+        "date": "August 2022",
+        "contribution": "Contributed ideas, collaborated with fellow participants, and supported activities promoting positive community engagement.",
         "gallery": [
           "/images/bik.JPG"
-        ]
+        ],
+        "location": "Kathmandu, Nepal",
+        "role": "Took part in activities designed to encourage teamwork, learning, and active involvement in the community.",
+        "title": "Youth Learning and Community Participation",
+        "id": "school-community-event-02",
+        "image": "/images/bik.JPG",
+        "description": "A school and community engagement initiative centred on youth participation, collaborative learning, and building stronger connections between young people and their communities."
       }
     ],
     "grassrootLocal": [
       {
-        "id": "grassroot-local-event-01",
-        "title": "Grassroots Community Initiative",
-        "date": "July 2022",
-        "location": "Kathmandu, Nepal",
-        "image": "/images/bik.JPG",
-        "description": "A grassroots-focused initiative highlighting the importance of local participation, community collaboration, and youth involvement in addressing community needs.",
-        "role": "Participated in local-level engagement and collaborative activities focused on strengthening community connections and encouraging youth involvement.",
-        "contribution": "Supported grassroots engagement by collaborating with participants, exchanging ideas, and contributing to activities aimed at promoting community participation.",
         "impact": "Helped encourage local participation, build community connections, and highlight the role of young people in community-led initiatives.",
+        "date": "July 2022",
+        "contribution": "Supported grassroots engagement by collaborating with participants, exchanging ideas, and contributing to activities aimed at promoting community participation.",
         "gallery": [
           "/images/bik.JPG"
-        ]
+        ],
+        "location": "Kathmandu, Nepal",
+        "role": "Participated in local-level engagement and collaborative activities focused on strengthening community connections and encouraging youth involvement.",
+        "title": "Grassroots Community Initiative",
+        "id": "grassroot-local-event-01",
+        "image": "/images/bik.JPG",
+        "description": "A grassroots-focused initiative highlighting the importance of local participation, community collaboration, and youth involvement in addressing community needs."
       },
       {
-        "id": "grassroot-local-event-02",
-        "title": "Local Youth Leadership and Engagement",
-        "date": "September 2022",
-        "location": "Kathmandu, Nepal",
-        "image": "/images/bik.JPG",
-        "description": "A local-level initiative focused on encouraging youth leadership, community participation, and collaboration to support positive change within the local community.",
-        "role": "Participated in community engagement activities and collaborated with others to promote youth involvement in local initiatives.",
-        "contribution": "Supported discussions and activities centred on teamwork, local participation, and the importance of young people contributing to community development.",
         "impact": "Emphasised the value of grassroots participation and youth leadership in building stronger local communities.",
+        "date": "September 2022",
+        "contribution": "Supported discussions and activities centred on teamwork, local participation, and the importance of young people contributing to community development.",
         "gallery": [
           "/images/bik.JPG"
-        ]
+        ],
+        "location": "Kathmandu, Nepal",
+        "role": "Participated in community engagement activities and collaborated with others to promote youth involvement in local initiatives.",
+        "title": "Local Youth Leadership and Engagement",
+        "id": "grassroot-local-event-02",
+        "image": "/images/bik.JPG",
+        "description": "A local-level initiative focused on encouraging youth leadership, community participation, and collaboration to support positive change within the local community."
       }
     ]
   }
