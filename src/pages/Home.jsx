@@ -84,7 +84,7 @@ export default function Home() {
        <AdvocacySection/>
 
 <section
-  className="bg-surface-alt py-20 sm:py-24 lg:py-28"
+  className="bg-surface-alt py-10 sm:py-20 lg:py-10"
   aria-labelledby="events-h"
 >
   <Container>

@@ -16,7 +16,7 @@ export default function Contact() {
   const hasSocial = getActiveSocial().length > 0;
 
   return (
-    <div className="pb-10 pt-10 sm:pb-12 sm:pt-14 lg:pt-16">
+    <div className="pb-10 pt-20 sm:pb-12 sm:pt-14 lg:pt-20">
       {/* Page Heading */}
       <section className="mb-4 border-b border-line bg-surface py-4 sm:mb-5 sm:py-5">
         <Container>

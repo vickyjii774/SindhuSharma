@@ -12,7 +12,7 @@ export default function Experience() {
   });
 
   return (
-    <div className="pt-10 sm:pt-14 lg:pt-16 pb-12 sm:pb-16">
+    <div className="pt-20 sm:pt-20 lg:pt-20 pb-12 sm:pb-20">
       {/* Page Header */}
       <section className="py-5 sm:py-7 bg-surface border-b border-line mb-5 sm:mb-6">
         <Container>

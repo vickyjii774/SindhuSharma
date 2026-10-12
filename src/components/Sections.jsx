@@ -66,7 +66,7 @@ export function MilestonesSection() {
 
   return (
     <section
-      className="border-b border-line bg-surface py-16 sm:py-20 lg:py-24"
+      className="border-b border-line bg-surface pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-10 lg:pb-12"
       aria-labelledby="milestones-h"
     >
       <Container>
@@ -110,14 +110,14 @@ export function AdvocacySection() {
   if (!siteData.advocacy?.length) return null;
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white border-b border-line" aria-labelledby="advocacy-h">
+    <section className="py-10 sm:py-10 lg:py-10 bg-white border-b border-line" aria-labelledby="advocacy-h">
       <Container>
         <Reveal>
           <SectionHeading
            
             title="Advocacy & Causes"
             id="advocacy-h"
-            text="Initiatives, grassroots causes, and public speaking engagements that Sindhu champion."
+            text="Initiatives, grassroots causes, and public speaking engagements that Sindhu campion."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
             {siteData.advocacy.map((a) => (

@@ -29,7 +29,7 @@ export default function Events() {
   ].filter(Boolean);
 
   return (
-    <div className="pb-12 pt-10 sm:pb-16 sm:pt-14 lg:pt-16">
+    <div className="pb-12 pt-20 sm:pb-16 sm:pt-14 lg:pt-20">
       {/* Page Header */}
       <section className="mb-5 border-b border-line bg-surface py-5 sm:mb-6 sm:py-7">
         <Container>

@@ -97,7 +97,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-brand text-white ${
-        scrolled ? "shadow-md py-3 sm:py-4" : "py-4 sm:py-5"
+        scrolled ? "shadow-md py-2.5 sm:py-4" : "py-4 sm:py-5"
       }`}
     >
       <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12 flex items-center justify-between">
@@ -106,7 +106,7 @@ export default function Navbar() {
         -------------------------------- */}
       <Link
   to="/"
-  className="font-serif text-sm sm:text-lg md:text-xl lg:text-2xl font-bold tracking-widest uppercase text-white hover:text-brand-light transition-colors cursor-pointer select-none"
+  className="font-serif text-sm sm:text-lg md:text-xl lg:text-2xl font-bold tracking-widest uppercase text-white  cursor-pointer select-none"
   aria-label={`${siteData.personal.name} — Home`}
 >
   {siteData.personal.name}

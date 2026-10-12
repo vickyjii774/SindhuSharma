@@ -3,7 +3,7 @@ import Gallery from "./Gallery";
 
 export default function AdvocacyCard({ item }) {
   return (
-    <div className="grid grid-cols-2 items-start gap-3 sm:gap-6 lg:gap-10">
+    <div className="grid grid-cols-2 items-start gap-3 sm:gap-6 lg:gap-0">
       {/* Left: Text Without Container */}
       <div className="flex min-w-0 flex-col py-1 sm:py-3">
         <h3 className="font-serif text-base font-bold leading-snug text-ink transition-colors duration-200 hover:text-brand sm:text-2xl lg:text-3xl">

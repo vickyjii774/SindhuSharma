@@ -29,7 +29,7 @@ export default function About() {
   });
 
   return (
-    <div className="pt-10 sm:pt-14 lg:pt-16">
+    <div className="pt-20 sm:pt-14 lg:pt-16">
       {/* Editorial Hero / Biography */}
 
 
